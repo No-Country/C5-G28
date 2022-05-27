@@ -1,3 +1,3 @@
 export default {
-  SECRET: "Bruno_B1234",
+  SECRET: "JuniorCoderBook",
 };

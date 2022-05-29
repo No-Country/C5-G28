@@ -14,6 +14,7 @@ export const verifyToken = async (req, res, next) => {
     const decoded = jwt.verify(token, config.SECRET);
 
     const userExists = await UserModel.findById(decoded.id, { password: 0 });
+    // Cargo en el req para el next
     req.userId = decoded.id;
 
     if (!userExists)

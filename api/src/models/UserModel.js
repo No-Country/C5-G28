@@ -15,12 +15,25 @@ const userSchema = new Schema(
       type: String,
       unique: true,
     },
+    bornDate: {
+      type: String,
+    },
     roles: [
       {
         ref: "RoleModel",
         type: Schema.Types.ObjectId,
       },
     ],
+    resetToken: {
+      type: String,
+    },
+    confirmToken: {
+      type: String,
+    },
+    confirmedAccount: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true, versionKey: false }
 );

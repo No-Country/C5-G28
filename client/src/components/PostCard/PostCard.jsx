@@ -2,16 +2,8 @@ import React from "react";
 
 export const PostCard = () => {
   return (
-    <div className="row bg-light border mt-5 d-flex align-items-center mx-0">
-      <div className="col-md-3 d-none d-md-block">
-        <img
-          style={{ width: "100%" }}
-          src="https://media.istockphoto.com/photos/positive-woman-video-calling-using-laptop-at-home-picture-id1333405308?k=20&m=1333405308&s=612x612&w=0&h=dVMykfJjxolA8Pu0-narX694yHAWSZyZerKvvI6XfCA="
-          alt="Trendy Pants and Shoes"
-          className="img-fluid rounded-start"
-        />
-      </div>
-      <div className="col-md-9 p-4 shadow-4 rounded-3">
+    <div className="row  mt-5 d-flex align-items-center mx-0">
+      <div className="col-md-9 p-4 shadow-4 rounded-3 text-left">
         <div>
           <h2>¿Cuál es la diferencia entre UX y UI?</h2>
           <p>
@@ -26,7 +18,10 @@ export const PostCard = () => {
           <div className="col-10 flex-row d-flex justify-content-start p-0">
             {/* RECIBIR ETIQUETAS E ITERAR */}
             <ul className="px-0">
-              <li type="button" className="btn btn-primary">
+              <li
+                type="button"
+                className="btn btn-primary rounded-pill px-3 mr-2 mt-2"
+              >
                 UX/UI
               </li>
             </ul>
@@ -61,6 +56,14 @@ export const PostCard = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="col-md-3 d-none d-md-block">
+        <img
+          style={{ width: "100%" }}
+          src="https://media.istockphoto.com/photos/positive-woman-video-calling-using-laptop-at-home-picture-id1333405308?k=20&m=1333405308&s=612x612&w=0&h=dVMykfJjxolA8Pu0-narX694yHAWSZyZerKvvI6XfCA="
+          alt="Trendy Pants and Shoes"
+          className="img-fluid rounded-start"
+        />
       </div>
     </div>
   );

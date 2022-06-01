@@ -4,8 +4,8 @@ import SidePostCard from "../components/SidePostCard/SidePostCard";
 
 const MostReaded = () => {
   return (
-    <div>
-      <div className="row mb-4 mx-0 mt-5 mt-md-0">
+    <div className="py-5">
+      <div className="row mb-4 mx-0 mt-5">
         <div className="pr-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +43,15 @@ const MostReaded = () => {
             <g></g>
           </svg>
         </div>
-        <h6>Lo más leído de esta semana</h6>
+        <h6 className="font-weight-normal">Lo más leído de esta semana</h6>
       </div>
       <SidePostCard />
       <SidePostCard />
       <SidePostCard />
       <SidePostCard />
+      <h6 className="font-weight-normal text-left">
+        Mirá todos los más leídos de la semana
+      </h6>
     </div>
   );
 };

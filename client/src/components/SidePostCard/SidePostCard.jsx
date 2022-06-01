@@ -7,8 +7,8 @@ const SidePostCard = () => {
         Recursos que todo Desarrollador Front-end debería tener en sus
         marcadores
       </h5>
-      <div className="row  justify-content-start align-items-center px-0 mx-0">
-        <div className="col-1 col-lg-3 d-md-flex justify-content-start justify-content-lg-center px-0 d-none">
+      <div className="row  justify-content-start align-items-center px-0 mx-0 mt-3">
+        <div className="col-1 col-lg-2 d-md-flex justify-content-start justify-content-lg-start px-0 d-none">
           <img
             src="https://i1.sndcdn.com/artworks-000582163358-xw0eap-t500x500.jpg"
             alt=""

@@ -8,6 +8,7 @@ import MostReaded from "../views/MostReaded";
 
 import FollowList from "../views/FollowList";
 import Preferences from "../components/Preferences/Preferences";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   return (
@@ -35,6 +36,7 @@ const Home = () => {
             <MostReaded />
             <hr className="d-none d-sm-block" />
             <FollowList />
+            <Footer />
           </div>
         </div>
       </div>

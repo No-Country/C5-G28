@@ -2,10 +2,12 @@ import React from "react";
 
 import PostCard from "../components/PostCard/PostCard";
 
+import "./css/MainPost.css";
+
 const MainPost = (props) => {
   return (
     <div className="mt-5 pb-5">
-      <ul className="nav nav-tabs">
+      <ul className="nav nav-tabs nav-post">
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="#">
             Siguiendo

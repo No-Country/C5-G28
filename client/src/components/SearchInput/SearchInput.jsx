@@ -6,10 +6,10 @@ export const SearchInput = () => {
   return (
     <form className="col-md-4 d-flex flex-row bd-highlight px-0">
       <InputGroup className="no-border">
-        <Input placeholder="Search..." />
         <InputGroupText>
-          <i className="nc-icon nc-zoom-split" />
+        <i class="fa fa-search" aria-hidden="true"></i>
         </InputGroupText>
+        <Input placeholder="Buscar Contenido..." className="search-input"/>
       </InputGroup>
     </form>
    

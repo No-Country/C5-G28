@@ -3,7 +3,7 @@ import React from "react";
 const FollowCard = () => {
   return (
     <div>
-      <div className="col-xl-12 row bg-light mt-2 col flex-row align-items-center justify-content-center justify-content-xl-start mx-0 py-4 pb-2 px-0">
+      <div className="col-xl-12 row bg-follow_card mt-2 col flex-row align-items-center justify-content-center justify-content-xl-start mx-0 py-4 pb-2 px-0">
         <div className="col-xl-2 col-md-6 mx-0 px-0 d-flex justify-content-center ">
           <img
             src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/film-the-big-lebowski-1998-the-dude-jeff-bridges-tops-pendleton-shawl-cardigan-1548360217.jpg?crop=0.545xw:1.00xh;0.312xw,0&resize=640:*"

@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.bg-follow_card {
+  border-radius: 10px;
+  background-color: #fff!important;
+}
+/* Login section css */
+

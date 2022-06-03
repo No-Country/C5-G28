@@ -1,24 +1,22 @@
-import logo from "./logo.svg";
+
+import { useMemo,useState } from "react";
 import "./App.css";
-import Sidebar from './components/Sidebar/sidebar'; 
+import { UserContext } from "./hooks/UserContext";
+import { AppRouter } from "./routes/AppRouter";
 
-//importar las rutas para mantener condigo limpio.
-import rutas from "./rutas";
 
-//importando react router para especificar las rutas a las secciones 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
+
+  const [user, setUser] = useState(null);
+
+  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+
   return (
     <div className="App">
-    <BrowserRouter>
-      <Sidebar />
-      <Routes>
-        {rutas.map((r, key) => (
-          <Route key={key} path={r.ruta} element={r.componente} />
-        ))}
-      </Routes>
-    </BrowserRouter>
+      <UserContext.Provider value={value}>
+        <AppRouter/>
+      </UserContext.Provider>
     </div>
   );
 }

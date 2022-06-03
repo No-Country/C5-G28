@@ -30,7 +30,7 @@ const FollowCard = () => {
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-plus-lg"
+              className="bi bi-plus-lg"
               viewBox="0 0 16 16"
             >
               <path

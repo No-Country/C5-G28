@@ -53,7 +53,7 @@ function Registro() {
                         </form>
                         <div className="w-100 text-center">
                             <p className="text-center">Ya tienes una Cuenta? </p>
-                            <Link to="/login" className="text-center link">Ingresa aqui.</Link>
+                            <Link to="/" className="text-center link">Ingresa aqui.</Link>
                         </div>
                         </div>
                         </div>

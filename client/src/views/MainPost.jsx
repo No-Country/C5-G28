@@ -5,7 +5,7 @@ import PostCard from "../components/PostCard/PostCard";
 const MainPost = (props) => {
   return (
     <div className="mt-5 pb-5">
-      <ul class="nav nav-tabs">
+      <ul className="nav nav-tabs">
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="#">
             Siguiendo

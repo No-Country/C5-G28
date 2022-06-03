@@ -9,7 +9,8 @@ import MostReaded from "../views/MostReaded";
 import FollowList from "../views/FollowList";
 import Preferences from "../components/Preferences/Preferences";
 import Footer from "../components/Footer/Footer";
-import UserCard from '../components/UserCard/Usercard'
+// import UserCard from '../components/UserCard/Usercard'
+
 const Home = () => {
   return (
     <div className="wrapper">
@@ -17,10 +18,7 @@ const Home = () => {
         <div className="row col-md mx-0">
           <div className="col-lg-1"></div>
           <div className="col-lg-7 px-4 px-sm-5 mt-5">
-            <UserCard/>
-            {/* <div className=" d-md-none">
-              <ThemeSwitch />
-            </div> */}
+            {/* <UserCard/> */}
 
             <div className="d-flex flex-row-reverse py-4 ">
               <SearchInput />
@@ -30,10 +28,6 @@ const Home = () => {
           </div>
 
           <div className="col-lg-4 px-5 bg-light">
-            {/* <div className="d-none d-md-block">
-              <ThemeSwitch />
-            </div> */}
-
             <MostReaded />
             <hr className="d-none d-sm-block" />
             <FollowList />

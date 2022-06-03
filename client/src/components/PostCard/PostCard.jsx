@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./PostCard.css";
+
 export const PostCard = () => {
   return (
     <div className="row  mt-5 d-flex align-items-center mx-0">
@@ -17,7 +19,7 @@ export const PostCard = () => {
         <div className=" d-flex align-items-center justify-content-between">
           <div className="col-10 flex-row d-flex justify-content-start p-0">
             {/* RECIBIR ETIQUETAS E ITERAR */}
-            <ul className="px-0">
+            <ul className="px-0 btn-postcard">
               <li
                 type="button"
                 className="btn btn-primary rounded-pill px-3 mr-2 mt-2"

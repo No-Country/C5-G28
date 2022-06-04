@@ -6,6 +6,11 @@ import { transporter } from "../libs/mailer";
 
 // Sign Up
 export const signUp = async (req, res) => {
+  console.log(req.body.username)
+  console.log(req.body.email)
+  console.log(req.body.password)
+  console.log(req.body.roles)
+  console.log(req.body.bornDate)
   try {
     const { username, email, password, roles, bornDate } = req.body;
 
@@ -22,11 +27,13 @@ export const signUp = async (req, res) => {
 
     // Evaluo si el usuario tiene al menos 12 años
     const parsedBornDate = new Date(bornDate);
+
     const userAge = new Date().getFullYear() - parsedBornDate.getFullYear();
     if (userAge < 12)
       return res
         .status(400)
         .json({ message: "User must be over 12 years old" });
+        
     // Inserto edad en la base
     newUser.bornDate = parsedBornDate.toISOString().split("T")[0];
 
@@ -58,10 +65,10 @@ export const signUp = async (req, res) => {
     const verificationLink = `${process.env.CONFIRM_USER_LINK}${token}`;
 
     const savedUser = await newUser.save();
-
+    
     // Verification mail
     await transporter.sendMail({
-      from: '"CONFIRM ACCOUNT" <juniorcoderbook@example.com>', // sender address
+      from: '"CONFIRM ACCOUNT" <juniorcoderbook@hotmail.com>', // sender address
       to: savedUser.email, // list of receivers
       subject: "Hello ✔", // Subject line
       text: "Have a good time with juniorcoderbook", // plain text body
@@ -73,6 +80,7 @@ export const signUp = async (req, res) => {
       message: "Check your email for a link to confirm your account",
     });
   } catch (error) {
+    console.log(error)
     return res.status(400).json({ message: "Somethin went wrong, try again" });
   }
 };
@@ -144,7 +152,7 @@ export const forgotPassword = async (req, res) => {
 
     // Envio del email al usuario
     await transporter.sendMail({
-      from: '"Forgot password 👻" <juniorcoderbook@example.com>', // sender address
+      from: '"Forgot password 👻" <juniorcoderbook@hotmail.com>', // sender address
       to: userExists.email, // list of receivers
       subject: "Hello ✔", // Subject line
       text: "Next time, write your password on paper or something like that jajaj", // plain text body

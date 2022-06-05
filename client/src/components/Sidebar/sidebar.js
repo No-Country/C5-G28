@@ -38,10 +38,10 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="has-subnav">
-              <a href="#">
+              <Link to={"/guardados"}>
                 <i className="fa fa-bookmark" aria-hidden="true"></i>
                 <span className="nav-text">Elementos guardados</span>
-              </a>
+              </Link>
             </li>
             <li className="has-subnav">
               <Link to="/posts">

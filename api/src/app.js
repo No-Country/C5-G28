@@ -7,7 +7,7 @@ import { createRoles } from "./libs/initialSetup";
 
 // Routes Import
 import authRoutes from "./routes/auth.routes";
-
+import postRoutes from "./routes/post.routes"
 const app = express();
 
 // Initial Setup
@@ -30,5 +30,5 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/auth", authRoutes);
-
+app.use("/api/post", postRoutes);
 export default app;

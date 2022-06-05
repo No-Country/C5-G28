@@ -5,7 +5,7 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      unique: false,
+      unique: true,
     },
     email: {
       type: String,
@@ -17,6 +17,9 @@ const userSchema = new Schema(
     },
     bornDate: {
       type: String,
+    },
+    urlProfile:{
+      type:String
     },
     roles: [
       {

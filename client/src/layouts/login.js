@@ -47,7 +47,7 @@ function Login() {
                                     </div>
                                 </div>
 
-                                <form onSubmit={handleSubmit}className="signin-form">
+                                <form onSubmit={handleSubmit} className="signin-form">
 
                                     <div className="form-group mb-2">
                                         <input className="form-control" type="text" name="email" placeholder="Ingresa tu e-mail" required />

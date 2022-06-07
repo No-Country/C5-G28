@@ -28,6 +28,7 @@ const Sidebar = () => {
                   JuniorCoderBook
                 </span>
               </Link>
+              <Link to="/verificacion">Veri</Link>
             </li>
           </div>
           <div>

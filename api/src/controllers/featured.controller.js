@@ -1,34 +1,23 @@
 import PostModel from "../models/PostModel";
 
+export const featured = (req, res) => {
+  let searchString = req.params.q;
+  console.log(searchString);
 
-export const featured =  (req,res) =>{
-    let searchString = req.body.search;
+  PostModel.find()
+    .sort({ _id: -1 })
+    .limit(searchString)
 
-     PostModel.find({
-        $or:[
-            {title:{$regex:searchString,$options:'i'}},
-            {content:{$regex:searchString,$options:'i'}}
-        ],
-    })
-    .sort([['date','ascending']])
-    .exec((error,post)=>{
-        if(error){
-            return res.status(500).send({
-                status:'error',
-                message:'error'
-            })
-        }
-        if(!post || post.length <= 5){
-            return res.status(500).send({
-                status:'result',
-                message:'No results'
-            })
-        }
-       // console.log(error,post)
-       return res.status(200).send({
-        status: 'success',
-        post
+    .exec((error, post) => {
+      if (error) {
+        return res.status(500).send({
+          status: "error",
+          message: "error",
+        });
+      }
+      return res.status(200).send({
+        status: "success",
+        post,
+      });
     });
-    })
-
-}
+};

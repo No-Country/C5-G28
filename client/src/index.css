@@ -172,3 +172,11 @@ height: 100%;
 .col-md-4{
   flex: 0 0 40.33333%;
 }
+
+.color {
+  color: black;
+}
+
+.color:hover {
+  color: #F56A00;
+}

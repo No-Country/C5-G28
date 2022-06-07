@@ -6,11 +6,8 @@ import { transporter } from "../libs/mailer";
 
 // Sign Up
 export const signUp = async (req, res) => {
-  console.log(req.body.username)
-  console.log(req.body.email)
-  console.log(req.body.password)
-  console.log(req.body.roles)
-  console.log(req.body.bornDate)
+  console.log(req.body.nombre)
+
   try {
     const { username, email, password, roles, bornDate,urlProfile } = req.body;
 

@@ -2,7 +2,7 @@ import PostModel from "../models/PostModel";
 // import validator from 'validator';
 
 export const create = async (req, res) => {
-  let { username, title, content, urlPhoto } = req.body;
+  let { username, title, content, urlPhoto, categories } = req.body;
   try {
     if (!username || !title || !content) {
       return res.status(400).json({
@@ -16,6 +16,7 @@ export const create = async (req, res) => {
       title,
       content,
       urlPhoto,
+      categories,
     });
     newPost.save();
     return res.status(200).json({ status: "succed", message: "ok" });
@@ -125,4 +126,82 @@ export const edit = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const like = (req, res) => {
+  let idPost = req.params.id;
+  let userId = req.body.userId;
+
+  PostModel.findByIdAndUpdate(
+    { _id: idPost },
+    { $push: { likes: userId } }
+  ).exec((error, user) => {
+    if (error) {
+      console.log(error);
+      return res.status(500).send({
+        status: "error",
+        message: "error",
+      });
+    }
+    if (!idPost || !userId) {
+      return res.status(500).send({
+        status: "result",
+        message: "No results",
+      });
+    }
+
+    return res.status(200).send({
+      user,
+    });
+  });
+};
+
+export const dislike = (req, res) => {
+  let idPost = req.params.id;
+  let userId = req.body.userId;
+
+  PostModel.findByIdAndUpdate(
+    { _id: idPost },
+    { $pull: { likes: userId } }
+  ).exec((error, user) => {
+    if (error) {
+      console.log(error);
+      return res.status(500).send({
+        status: "error",
+        message: "error",
+      });
+    }
+    if (!idPost || !userId) {
+      return res.status(500).send({
+        status: "result",
+        message: "No results",
+      });
+    }
+
+    return res.status(200).send({
+      user,
+    });
+  });
+};
+
+export const getByCategories = (req, res) => {
+  let category = req.params.category;
+
+  PostModel.find({ categories: category }).exec((error, post) => {
+    if (error) {
+      return res.status(500).send({
+        status: "error",
+        message: "error",
+      });
+    }
+    if (!post || post.length <= 0) {
+      return res.status(500).send({
+        status: "result",
+        message: "No results",
+      });
+    }
+    return res.status(200).send({
+      post,
+    });
+  });
 };

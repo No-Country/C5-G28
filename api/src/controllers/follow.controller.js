@@ -1,16 +1,60 @@
 import UserModel from "../models/UserModel";
 
-const getUser = (id) => {};
+export const save = async (req, res) => {
+  let id = req.params.id;
+  let followid = req.body.followid;
 
-export const save = (req, res) => {
-  let { id, followid } = req.params;
-  console.log(id);
-  console.log(followid);
+  await UserModel.findByIdAndUpdate(
+    { _id: id },
+    { $push: { follows: followid } }
+  ).exec((error, user) => {
+    if (error) {
+      console.log(error);
+      return res.status(500).send({
+        status: "error",
+        message: "error",
+      });
+    }
+    if (!id || !followid) {
+      return res.status(500).send({
+        status: "result",
+        message: "No results",
+      });
+    }
 
-  UserModel.find();
+    return res.status(200).send({
+      user,
+    });
+  });
 };
 
-export const remove = (req, res) => {};
+export const remove = async (req, res) => {
+  let id = req.params.id;
+  let followid = req.body.followid;
+
+  await UserModel.findByIdAndUpdate(
+    { _id: id },
+    { $pull: { follows: followid } }
+  ).exec((error, user) => {
+    if (error) {
+      console.log(error);
+      return res.status(500).send({
+        status: "error",
+        message: "error",
+      });
+    }
+    if (!id || !followid) {
+      return res.status(500).send({
+        status: "result",
+        message: "No results",
+      });
+    }
+
+    return res.status(200).send({
+      user,
+    });
+  });
+};
 
 export const getAll = (req, res) => {
   let userId = req.params.id;

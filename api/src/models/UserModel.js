@@ -18,8 +18,8 @@ const userSchema = new Schema(
     bornDate: {
       type: String,
     },
-    urlProfile:{
-      type:String
+    urlProfile: {
+      type: String,
     },
     roles: [
       {
@@ -36,6 +36,18 @@ const userSchema = new Schema(
     confirmedAccount: {
       type: Boolean,
       default: false,
+    },
+    likes: {
+      type: [String],
+    },
+    postSaved: {
+      type: [String],
+    },
+    preferences: {
+      type: [String],
+    },
+    follows: {
+      type: [String],
     },
   },
   { timestamps: true, versionKey: false }

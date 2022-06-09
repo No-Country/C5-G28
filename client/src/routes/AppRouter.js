@@ -9,6 +9,7 @@ import Login from "../layouts/login";
 import Registro from "../layouts/registro";
 import Posts from "../layouts/Post";
 import SavedElements from "../layouts/SavedElements";
+import Verification from '../layouts/verificacion';
 
 //importando react router para especificar las rutas a las secciones
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -28,6 +29,7 @@ export const AppRouter = () => {
           </Route>
           <Route element={<Login />} path="/" />
           <Route element={<Registro />} path="/registrarse" />
+          <Route element={<Verification />} path="verificacion" />
         </Routes>
       </Router>
     </>

@@ -1,0 +1,125 @@
+/*********************** 
+         RESETEO
+************************/
+:root{
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+   
+}
+/*************************/
+
+
+
+.my-fkng-container{
+    background-color: #00000025;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+   width: 80%;   
+     
+}
+
+
+.my-position-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0;
+     
+}
+
+.my-button-form{
+    border: none;
+ 
+    padding: .3rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color:white;
+    background-color: #EE5007;
+    font-size: clamp(.8rem,2vw,1.2rem);
+    border-radius: 10px;
+     
+    
+}
+
+.my-child-container-form{
+    background-color: white;
+    border-radius: 1rem;
+    text-align: left;
+    padding: 1rem 0 1rem 1rem;
+     
+  
+}
+
+
+
+.my-input-form{
+    display: block;
+    width: 100%;
+    border: none;
+     
+    
+    
+}
+
+.my-title-input{
+    border-bottom: thin solid #00000050;
+     
+}
+
+.my-title-input::placeholder{
+
+    color:#222;
+    font-weight: 400;
+    font-size: clamp(1rem, 2vw, 2rem);
+    letter-spacing: .55rem;
+}
+
+.form-control-lg{
+    width: 98%;
+    height: calc(1.5em + 1rem + 2px);
+    font-size: clamp(.8rem,2vw,1.2rem);
+    background-color: #fff;
+    border: none;
+    border-bottom: thin solid #00000050;
+
+  
+}
+
+.my-text-area{
+    overflow-y:scroll;
+    word-wrap: break-word;
+    word-break: break-word;
+    resize: none;
+    padding-top: 1rem;
+}
+
+.my-text-area::placeholder{
+    color:#22222290;
+    font-size: clamp(.8rem, 2vw, 1rem);
+}
+
+
+/**************************************************
+            INPUT FILE PERSONALIZADO
+*************************************************/
+.my-label-input-file{
+    
+    cursor: pointer;
+    background-color: #00000010;
+    border: thin solid #00000060;
+    color: black;
+    border-radius: 5px;
+    padding: .1rem .2rem;
+    font-size: clamp(.75rem,2vw,.9rem);
+}
+
+.my-input-file{
+    
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
+         
+}
+/***************************************************/

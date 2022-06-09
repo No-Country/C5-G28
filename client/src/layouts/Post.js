@@ -1,10 +1,11 @@
 import React from 'react';
+import MakeAPost from '../components/MakeAPost/makeapost';
 
 
 const Posts = () => {
     return (
-        <h1>Seccion para leer los Post</h1>
-    )
-}
+       <MakeAPost/>
+    );
+};
 
 export default Posts;

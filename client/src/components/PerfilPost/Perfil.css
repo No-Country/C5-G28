@@ -1,0 +1,56 @@
+.imagen {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}
+
+.nombre{
+    font-size: 25px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+h1{
+    font-size: 35px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-left: -10px;
+}
+
+h2{
+    font-size: 30px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-left: -10px;
+}
+
+P{
+    font-size: 16px;
+    font-family: 'Titillium Web', sans-serif;
+    text-align: left;
+}
+
+.btn-black{
+    color: #000;
+}
+
+.imagen2{
+    width: 550px;
+    height: auto;
+}
+
+.iconos{
+    font-size: 25px;
+    width: 70px !important;
+}
+
+.iconos span{
+    font-size:15px;
+    font-family: 'Titillium Web', sans-serif;
+    padding-left: 5px;
+}
+
+.iconos:hover{
+    color: #000 !important;
+}

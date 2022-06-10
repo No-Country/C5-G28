@@ -54,7 +54,7 @@ function Login() {
     }
     return (
         <section className="form-section my-containter">
-            <div className="container">            
+            <div className="container" style={{display:'grid'}}>            
                 <div className="row justify-content-center">
 
                     

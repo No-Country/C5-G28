@@ -31,9 +31,9 @@ console.log(user)
             <li>
               <Link to="/home">
                 {/* <i className="fa"> */}
-                <img src="../LogoF.png" alt="" className="logo" />
+                <img src="../LogoF.png" alt="" style={{ marginTop:'20px' }} className="logo" />
                 {/* </i> */}
-                <span className="nav-text" style={{ padding: "10px" }}>
+                <span className="nav-text" style={{ height:'91px' }}>
                   JuniorCoderBook
                 </span>
               </Link>
@@ -77,9 +77,9 @@ console.log(user)
             <li>
               <a href="/">
                 {/* <i className="fa"> */}
-                <img src="../profile 1.png" alt="" className="logo2" />
+                <img src="../profile 1.png" alt="" style={{ marginTop: "22px"}} className="logo2" />
                 {/* </i> */}
-                <span className="nav-text" style={{ padding: "10px" }}>
+                <span className="nav-text" style={{ padding: "10px",width:'250px',height:'91px' }}>
                   Log-out
                 </span>
               </a>

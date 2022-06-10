@@ -7,9 +7,27 @@ import '../components/SocialButtons/social.css';
 
 
 function Registro() {
+/*     const url = 'http://localhost:3001/api/auth';
+    handleSubmit = ( ) => {
+        e.preventDefault();
+
+        try{
+            axios.post(
+                url + '/signup',
+                {email:email,password:password}
+                ).then(res => {
+
+                    MySwal.fire({title:<h2> Registrado </h2>}).then(()=>{})
+                    Navigate('/verificacion')
+
+                }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
+        }catch(error){
+            console.log(error)
+        } 
+    } */
     return (
         <section className="ftco-section my-containter">
-            <div className="container">            
+            <div className="container" style={{display:'grid'}}>            
                 <div className="row justify-content-center">
                     <div className="col-md-12 col-lg-10 bg-color mt-3">
                         <div className="wrap d-md-flex">
@@ -21,7 +39,7 @@ function Registro() {
                                     <h3 className="mb-4">&#161; Bienvenido/a &#33;</h3>
                                 </div>
                             </div>
-                        <form className="signin-form">
+                        <form className="signin-form" >
                             <div className="form-group mb-3">
                                 {/* input con clase form-control  */}
                                <input className="form-control" type="text" placeholder="Ingresa tu nombre"/>

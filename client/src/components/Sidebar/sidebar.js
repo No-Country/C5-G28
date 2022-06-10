@@ -1,19 +1,28 @@
-import React, { useContext } from "react";
+import React,{useContext,useEffect} from "react";
 import "./sidebar.css";
 
 //importando Link desde react route para poder navegar entre las secciones
 import { Link } from "react-router-dom";
-import { UserContext } from "../../hooks/UserContext";
-
+import { StoreContext } from "../../store/storeProvider";
+import { types } from "../../store/storeReducer";
 const Sidebar = () => {
-  const { user, setUser } = useContext(UserContext);
-  const handleLogout = () => {
-    setUser(null);
-  };
-  if (!user) {
+   const {user} = useContext(StoreContext);
+   const { dispatch } = useContext(StoreContext);    
+   const handleLogout = () => {
+    dispatch({type:types.authLogOut}); 
+  }; 
+  
+  
+  const logOut = () =>{
+    return{
+        type:types.authLogOut
+    }
+}
+console.log(user)
+   if (!user.user.id) {
     return;
   }
-
+ 
   return (
     <nav className="main-menu" style={{ position: "fixed" }}>
       <ul>
@@ -28,7 +37,7 @@ const Sidebar = () => {
                   JuniorCoderBook
                 </span>
               </Link>
-              <Link to="/verificacion">Veri</Link>
+             {/*  <Link to="/verificacion">Veri</Link> */}
             </li>
           </div>
           <div>
@@ -64,7 +73,7 @@ const Sidebar = () => {
             </li>
           </div>
 
-          <div className="logout" onClick={handleLogout}>
+          <div className="logout" onClick={() => {dispatch({type:types.authLogOut})}}>
             <li>
               <a href="/">
                 {/* <i className="fa"> */}

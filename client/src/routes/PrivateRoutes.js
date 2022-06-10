@@ -1,11 +1,12 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet, Navigate } from 'react-router-dom';
+import { StoreContext } from '../store/storeProvider';
 import { useContext } from 'react';
-import { UserContext } from '../hooks/UserContext';
 
 const PrivateRoutes = () => {
-    const {user} = useContext(UserContext);
+    const {user} = useContext(StoreContext);
+    
     return(
-        user ? <Outlet/> : <Navigate to="/"/>
+        user.user.id ? <Outlet/> : <Navigate to="/"/>
     )
 }
 

@@ -1,29 +1,57 @@
 import React,{useContext} from 'react';
 import { Link } from "react-router-dom";
 import LoginImage from '../assets/img/loginImg.png';
-import GoogleBtn from '../components/SocialButtons/googleBtn';
-import FacebookBtn from '../components/SocialButtons/facebookBtn';
-import { useNavigate } from 'react-router-dom';
-import '../components/SocialButtons/social.css';
-import { UserContext } from '../hooks/UserContext';
-import "../styles/login.css";
+import GoogleBtn from '../components/SocialButtons/GoogleBtn';
+import FacebookBtn from '../components/SocialButtons/FacebookBtn';
 
+import '../components/SocialButtons/social.css';
+
+import { StoreContext } from '../store/storeProvider';
+import "../styles/login.css";
+import { types } from '../store/storeReducer';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 function Login() {
-    let Navigate = useNavigate();
-    const {setUser} = useContext(UserContext);
-    const handleSubmit = e => {
-        e.preventDefault();
-        let email = e.target.email.value;
-        let password = e.target.password.value;
+        const MySwal = withReactContent(Swal)
+        const { user,dispatch } = useContext(StoreContext);
+  
+        let Navigate = useNavigate();
 
-        if(email === '1' && password ==='1'){
-            console.log('funka')
-            setUser(true)
-            Navigate('/home')
+        const handleSubmit = e =>{
+            e.preventDefault();
+            let email = e.target.email.value;
+            let password = e.target.password.value;
+            
+            try{
+                axios.post(
+                    'http://localhost:3001/api/auth/signin',
+                    {email:email,password:password}
+                    ).then(res => {
+                        console.log(res)
+                        let {id,token,userName,urlProfile} = res.data;
+                        dispatch(loginState(id,token,userName,urlProfile));
+                        //MySwal.fire({title:<h2> Logueado </h2>}).then(()=>{})
+                        Navigate('/home')
+                    }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
+            }catch(error){
+                console.log(error)
+            } 
         }
-    }
 
+        const loginState = (id,token,userName,urlProfile) =>{
+            return{
+                type:types.authLogIn,
+                payload:{id:id,token:token,userName:userName,urlProfile:urlProfile}
+            }
+        }
+    console.log(user.user.id)
+    if (user.user.id !== null){
+        Navigate('/home')
+
+    }
     return (
         <section className="form-section my-containter">
             <div className="container">            

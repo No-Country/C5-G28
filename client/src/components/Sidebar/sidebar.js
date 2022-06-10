@@ -6,23 +6,17 @@ import { Link } from "react-router-dom";
 import { StoreContext } from "../../store/storeProvider";
 import { types } from "../../store/storeReducer";
 const Sidebar = () => {
-   const {user} = useContext(StoreContext);
-   const { dispatch } = useContext(StoreContext);    
-   const handleLogout = () => {
-    dispatch({type:types.authLogOut}); 
-  }; 
+  const {user} = useContext(StoreContext);
+  const { dispatch } = useContext(StoreContext);    
+
   
   
-  const logOut = () =>{
-    return{
-        type:types.authLogOut
-    }
-}
+
 console.log(user)
    if (!user.user.id) {
     return;
   }
- 
+  
   return (
     <nav className="main-menu" style={{ position: "fixed" }}>
       <ul>
@@ -73,7 +67,7 @@ console.log(user)
             </li>
           </div>
 
-          <div className="logout" onClick={() => {dispatch({type:types.authLogOut})}}>
+          <div className="logout"  onClick={() => {dispatch({type:types.authLogOut})}} >
             <li>
               <a href="/">
                 {/* <i className="fa"> */}

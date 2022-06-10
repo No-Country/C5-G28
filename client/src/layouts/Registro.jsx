@@ -6,8 +6,7 @@ import axios from 'axios';
 import '../components/SocialButtons/social.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { ErrorMessage, FormikErrors, useFormik } from 'formik';
-import * as Yup from 'yup';
+
 
 function Registro() {
 /*     const {handleSubmit,errors,touched,getFieldProps} = useFormik({

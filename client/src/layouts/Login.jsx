@@ -47,11 +47,7 @@ function Login() {
                 payload:{id:id,token:token,userName:userName,urlProfile:urlProfile}
             }
         }
-    console.log(user.user.id)
-    if (user.user.id !== null){
-        Navigate('/home')
 
-    }
     return (
         <section className="form-section my-containter">
             <div className="container" style={{display:'grid'}}>            

@@ -9,10 +9,6 @@ const Sidebar = () => {
   const {user} = useContext(StoreContext);
   const { dispatch } = useContext(StoreContext);    
 
-  
-  
-
-console.log(user)
    if (!user.user.id) {
     return;
   }

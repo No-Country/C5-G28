@@ -6,26 +6,51 @@ import axios from 'axios';
 import '../components/SocialButtons/social.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-
-
+import { ErrorMessage, FormikErrors, useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 function Registro() {
-/*     const {handleSubmit,errors,touched,getFieldProps} = useFormik({
+    const MySwal = withReactContent(Swal)
+    let Navigate = useNavigate();
+    const {handleSubmit,errors,touched,getFieldProps} = useFormik({
         initialValues:{
-            name:'',
-            lastName:'',
+            username:'',
             email:'',
             date:'',
-            urlProfile:''
+            urlProfile:'',
+            password:'',
+            passwordConfirm:''
         },
         onSubmit:values => {
+            console.log(values)
+
+            try{
+                axios.post(
+                    'http://localhost:3001/api/auth/signup',
+                    {username: values.username,
+                    email: values.email,
+                    bornDate: values.date,
+                    urlProfile: values.urlProfile,
+                    password: values.password,
+                    passwordConfirm: values.passwordConfirm}
+                    ).then(res => {
+                        console.log(res)
+
+
+                        Navigate('/verificacion')
+                    }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
+            }catch(error){
+                console.log(error)
+            } 
 
         },
         validationSchema:Yup.object({
-            firstName:Yup.string().max(15,'debe tener 15 caracteres o menos').required('required'),
-            lastName:Yup.string().max(15,'debe tener 15 caracteres o menos').required('required'),
-            email:Yup.string().email('formato no valido').required('required')
+            username:Yup.string().max(15,'debe tener 15 caracteres o menos').required('required'),
+            email:Yup.string().email('formato no valido').required('required'),
+            password:Yup.string().max(14,'hasta 15 caracteres').min(8,'mas de 8 caracteres'),
+            passwordConfirm:Yup.string().max(14,'hasta 15 caracteres').min(8,'mas de 8 caracteres').oneOf([Yup.ref('password')], 'Contraseñas distintas')
         })
-    }) */
+    }) 
     return (
         <section className="ftco-section my-containter">
             <div className="container" style={{display:'grid'}}>            
@@ -40,37 +65,43 @@ function Registro() {
                                     <h3 className="mb-4">&#161; Bienvenido/a &#33;</h3>
                                 </div>
                             </div>
-                        <form className="signin-form" >
+                        <form className="signin-form" onSubmit={handleSubmit}>
                             <div className="form-group mb-3">
                                 {/* input con clase form-control  */}
-                               <input className="form-control" name="name" type="text" placeholder="Ingresa tu nombre"/>
+                               <input className="form-control" {...getFieldProps('username')} type="text" placeholder="Ingresa tu nombre"/>
                             </div>
-
+{/* 
                             <div className="form-group mb-3">
-                                {/* input con clase form-control  */}
-                               <input className="form-control" name="lastName" type="text" placeholder="Ingresa tu apellido"/>
+                                { input con clase form-control  }
+                               <input className="form-control" {...getFieldProps('lastName')} type="text" placeholder="Ingresa tu apellido"/>
+                            </div>
+ */}
+                            <div className="form-group mb-3">
+                               {/* input clase form-control tipo email */}
+                               <input className="form-control" {...getFieldProps('date')} type="date" placeholder="Ingresa tu fecha de nacimento"/>                              
                             </div>
 
                             <div className="form-group mb-3">
                                {/* input clase form-control tipo email */}
-                               <input className="form-control" name="date" type="date" placeholder="Ingresa tu fecha de nacimento"/>                              
+                               <input className="form-control" {...getFieldProps('email')} type="email" placeholder="Ingresa tu Email"/>
+                               {touched.email && errors.email && <span>{errors.email}</span>}                              
                             </div>
 
                             <div className="form-group mb-3">
-                               {/* input clase form-control tipo email */}
-                               <input className="form-control" name="email" type="email" placeholder="Ingresa tu Email"/>                              
+ 
+                               <input className="form-control" {...getFieldProps('urlProfile')} type="text" placeholder="url foto de perfil *op"/>
                             </div>
-
                            
 
                             <div className="form-group mb-3">
                                {/* input clase form-control tipo password */}
-                               <input className="form-control" name="password" type="password" placeholder="Ingresa una contraseña"/>                              
+                               <input className="form-control" {...getFieldProps('password')} type="password" placeholder="Ingresa una contraseña"/>                              
                             </div>
     
                             <div className="form-group mb-3">
                                 {/* input para repetir la clave */}
-                               <input className="form-control" name="password_1" type="password" placeholder="Repetir tu contraseña"/>
+                               <input className="form-control" {...getFieldProps('passwordConfirm')} type="password" placeholder="Repetir tu contraseña"/>
+                               {touched.passwordConfirm && errors.passwordConfirm && <span>{errors.passwordConfirm}</span>}
                             </div>
 
                             <div className="form-group">

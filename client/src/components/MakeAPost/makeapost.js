@@ -3,7 +3,6 @@ import "../../styles/makeapost.css"
 
 
 
-
 const MakeAPost = () => {
     return (
     
@@ -27,7 +26,7 @@ const MakeAPost = () => {
 
                 {/* ETIQUETAS */}
                 <select name="item" size={1} className="d-flex form-control-lg my-title-input">
-                    <option value="" disabled>Agrega etiquetas (Máx. 4)</option>
+                    <option value="" disabled selected>Selecciona una categoría para tu post</option>
                     <option value="js">JavaScript</option>
                     <option value="react">React</option>
                     <option value="web-development">Desarrollo Web</option>
@@ -37,19 +36,12 @@ const MakeAPost = () => {
 
 
                 {/* TEXTAREA */}
-                <textarea name="textarea" rows="11.4" className='my-input-form my-text-area' placeholder='Escribe el contenido del artículo aquí...'></textarea>
+                <textarea name="textarea" rows="12" className='my-input-form my-text-area' placeholder='Escribe el contenido del artículo aquí...'></textarea>
 
 
-                {/* SUBIR ARCHIVO */}
-                <label>
-                    <input type="file" name="file" accept='.jpg, .png, .gif, .svg, .webp' className='my-input-form' multiple />
-                </label>
-
-                {/* NOTA IMPORTANTE!!!!!!! 💥💥💥 SI MODIFICO EL BOTÓN DEL INPUT FILE NO APARECE LA INFO DE LAS IMÁGENES QUE SE CARGAN Y NO HE ENCONTRADO FORMA DE SOLUCIONARLO.*/}
-                <br/>
-                <label class="my-label-input-file">
-                    Agregar imágenes
-                    <input name="file" type="file" accept='.jpg, .png, .gif, .svg, .webp' className='my-input-file' multiple/>
+                {/* CARGAR ENLACES */}
+                <label className="d-flex">
+                    <input type="text" name="enlace" placeholder='Ingresa una url de imágen aquí...' className='my-input-form my-input-url'/>
                 </label>
                 
 

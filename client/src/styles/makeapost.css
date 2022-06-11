@@ -31,7 +31,6 @@
 
 .my-button-form{
     border: none;
- 
     padding: .3rem 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -39,16 +38,21 @@
     background-color: #EE5007;
     font-size: clamp(.8rem,2vw,1.2rem);
     border-radius: 10px;
-     
-    
+}
+
+.my-button-form:hover{
+    background-color: #FFAE70;
+    color: black;
 }
 
 .my-child-container-form{
     background-color: white;
     border-radius: 1rem;
     text-align: left;
-    padding: 1rem 0 1rem 1rem;
-     
+    padding: 1rem 0 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+    /* height: 80vh; */
   
 }
 
@@ -65,27 +69,41 @@
 
 .my-title-input{
     border-bottom: thin solid #00000050;
-     
+    width: 98%;
+    color:black;
+    font-weight: 600;
+    font-size: clamp(.85rem, 2vw, 2rem);
 }
+
 
 .my-title-input::placeholder{
 
     color:#222;
-    font-weight: 400;
-    font-size: clamp(1rem, 2vw, 2rem);
+    font-weight: 600;
+    font-size: clamp(.85rem, 2vw, 2rem);
     letter-spacing: .55rem;
 }
 
+
+
 .form-control-lg{
     width: 98%;
+    padding: .2rem;
     height: calc(1.5em + 1rem + 2px);
     font-size: clamp(.8rem,2vw,1.2rem);
     background-color: #fff;
     border: none;
     border-bottom: thin solid #00000050;
-
-  
+    color: #222 
 }
+
+select > option:nth-child(1){
+    color:#22222240
+}
+select > option {
+    color: #22222290;
+}
+   
 
 .my-text-area{
     overflow-y:scroll;
@@ -93,6 +111,7 @@
     word-break: break-word;
     resize: none;
     padding-top: 1rem;
+    font-size: clamp(.8rem, 2vw, 1rem);
 }
 
 .my-text-area::placeholder{
@@ -100,26 +119,48 @@
     font-size: clamp(.8rem, 2vw, 1rem);
 }
 
-
-/**************************************************
-            INPUT FILE PERSONALIZADO
-*************************************************/
-.my-label-input-file{
-    
-    cursor: pointer;
-    background-color: #00000010;
-    border: thin solid #00000060;
-    color: black;
-    border-radius: 5px;
-    padding: .1rem .2rem;
-    font-size: clamp(.75rem,2vw,.9rem);
+.my-input-url{
+   margin-top:1rem;
+    padding-right:1.5rem;
+    color: #367BB8;
+    font-size: clamp(.8rem, 2vw, 1rem);
 }
 
-.my-input-file{
+
+/***********************
+        GENERALES   
+***********************/
+
+@media screen and (min-width:1280px){
+    .my-title-input{
+        padding-top:.5rem;
+    }
     
-        opacity: 0;
-        position: absolute;
-        z-index: -1;
-         
+    .my-child-container-form{
+       
+        height: 85%;
+    }
+    .my-child-container-form > .my-text-area{
+        height: 85%;
+    }
 }
-/***************************************************/
+
+
+@media screen and (max-width: 920px){
+    .my-child-container-form{
+        
+        height: 85%;
+    }
+    .my-child-container-form > .my-text-area{
+        height: 85%;
+    }
+}
+@media screen and (max-width: 420px){
+    .my-child-container-form{
+        
+        height: 90%;
+    }
+    .my-child-container-form > .my-text-area{
+        height: 83%;
+    }
+}

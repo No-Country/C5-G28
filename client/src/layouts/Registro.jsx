@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import RegistroBG from '../assets/img/registroImgBG.png';
-import "../styles/register.css";
 import axios from 'axios';
-import '../components/SocialButtons/social.css';
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { ErrorMessage, FormikErrors, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+
+import RegistroBG from '../assets/img/registroImgBG.png';
+import "../styles/register.css";
+import '../components/SocialButtons/social.css';
+
 function Registro() {
     const MySwal = withReactContent(Swal)
     let Navigate = useNavigate();
@@ -34,9 +36,6 @@ function Registro() {
                     password: values.password,
                     passwordConfirm: values.passwordConfirm}
                     ).then(res => {
-                        console.log(res)
-
-
                         Navigate('/verificacion')
                     }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
             }catch(error){

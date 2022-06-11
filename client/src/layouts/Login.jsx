@@ -1,26 +1,26 @@
 import React,{useContext} from 'react';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
 import LoginImage from '../assets/img/loginImg.png';
 import GoogleBtn from '../components/SocialButtons/GoogleBtn';
 import FacebookBtn from '../components/SocialButtons/FacebookBtn';
-
-import '../components/SocialButtons/social.css';
-
 import { StoreContext } from '../store/storeProvider';
-import "../styles/login.css";
 import { types } from '../store/storeReducer';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import { ErrorMessage, FormikErrors, useFormik } from 'formik';
-import * as Yup from 'yup';
+
+
+import "../styles/login.css";
+import '../components/SocialButtons/social.css';
 function Login() {
         const MySwal = withReactContent(Swal)
-        const { user,dispatch } = useContext(StoreContext);
+        const { dispatch } = useContext(StoreContext);
   
         let Navigate = useNavigate();
-
 
          const {handleSubmit,errors,touched,getFieldProps} = useFormik({
         initialValues:{

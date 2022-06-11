@@ -6,11 +6,11 @@ import { transporter } from "../libs/mailer";
 
 // Sign Up
 export const signUp = async (req, res) => {
-  console.log(req.body.nombre)
+  console.log(req.body)
 
   try {
     const { username, email, password, roles, bornDate,urlProfile } = req.body;
-
+    console.log(bornDate)
     const userExists = await UserModel.findOne({ email });
 
     if (userExists)

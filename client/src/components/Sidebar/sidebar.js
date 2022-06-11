@@ -1,4 +1,4 @@
-import React,{useContext,useEffect} from "react";
+import React,{useContext} from "react";
 import "./sidebar.css";
 
 //importando Link desde react route para poder navegar entre las secciones

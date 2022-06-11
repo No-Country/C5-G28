@@ -1,34 +1,48 @@
-import React,{useContext} from 'react';
+import React,{useContext,useState} from 'react';
 import "../../styles/makeapost.css"
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useFormik } from 'formik';
+import { useFormik,useField } from 'formik';
 import * as Yup from 'yup';
 import { StoreContext } from "../../store/storeProvider";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import CustomSelect from './CustomSelect'
+
+const options = [
+    { value: 'JavaScript', label: 'JavaScript Developer' },
+    { value: 'React', label: 'React' },
+    { value: 'Desarrollo Web', label: 'Desarrollo Web' },
+    { value: 'UX/UI', label: 'UX/UI' },
+    { value: 'Blockchain', label: 'Blockchain' }
+  ]
+
 const MakeAPost = () => {
     const MySwal = withReactContent(Swal)
     const { user } = useContext(StoreContext);
-
+ 
+   
+   
     let Navigate = useNavigate();
 
-     const {handleSubmit,errors,touched,getFieldProps} = useFormik({
+     const {handleSubmit, errors,touched, getFieldProps,setFieldValue,values} = useFormik({
     initialValues:{
         username:'',
         title:'',
-        category:'',
+        categories:'', 
         content:'',
         urlPhoto:''
     },
-    onSubmit:values => {
+    
+    onSubmit:(values) => {
         try{
-            console.log(values)
+            values.username = user.user.userName;
+            
             axios.post(
-                'http://localhost:3001/api/post/create',
-                {username:user.user.username,title:values.title,category:values.category,content:values.content,urlPhoto:values.content}
+                'http://localhost:3001/api/post/save/',
+                {username:values.username,title:values.title,categories:values.categories,content:values.content,urlPhoto:values.content}
                 ).then(res => {
-                    
+                    console.log(res)
                     MySwal.fire({title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})
                 }).catch(error => MySwal.fire({title:<h2> fallo post </h2>}))
         }catch(error){
@@ -36,21 +50,20 @@ const MakeAPost = () => {
         } 
     },
     validationSchema:Yup.object({
-        username:Yup.string().required('username requerido'),
         title:Yup.string().required('title requerido'),
-        category:Yup.string().required('categoria requerida'),
         content:Yup.string().required('content requerido'),
         urlPhoto:Yup.string().required('urlPhoto requerido')
     })
 })
+
     return (
     
     <section className='my-fkng-container'>
 
         
-        <form className='container'>
+        <form className='container' onSubmit={handleSubmit}>
             <div className='my-position-button'>
-                <button className='my-button-form'>Publicar</button>
+                <button type="submit" className='my-button-form'>Publicar</button>
             </div>
             
 
@@ -63,16 +76,18 @@ const MakeAPost = () => {
                     <input type="text" name="title" {...getFieldProps('title')} placeholder='Escribe un título aquí...' className='my-input-form my-title-input '/>
                 </label>
 
-                {/* ETIQUETAS */}
-                <select name="item" size={1} {...getFieldProps('category')} className="d-flex form-control-lg my-title-input">
-                    <option value="" disabled selected>Selecciona una categoría para tu post</option>
-                    <option value="js">JavaScript</option>
-                    <option value="react">React</option>
-                    <option value="web-development">Desarrollo Web</option>
-                    <option value="ux-ui">UX/UI</option>
-                    <option value="crypto">Desarrollo Blockchain</option>
-                </select>
+                 {/* <label className="d-flex">
+                    <input type="text" name="title" {...getFieldProps('username')} className='my-input-form my-title-input '/>
+                </label>  */}
 
+                {/* ETIQUETAS */}
+                <CustomSelect
+                    className='input'
+                    onChange={value=>setFieldValue('categories',value.value)}
+                    value={values.categories}
+                    options={options}
+                    />
+                {errors.categories ? <div className='error'>{errors.categories}</div> : null}
 
                 {/* TEXTAREA */}
                 <textarea name="textarea" {...getFieldProps('content')} rows="12" className='my-input-form my-text-area' placeholder='Escribe el contenido del artículo aquí...'></textarea>
@@ -94,3 +109,13 @@ const MakeAPost = () => {
 };
 
 export default MakeAPost;
+
+{/*                 <select values={categories}  name="categories" label="categories" defaultValue="" size={1} className="d-flex form-control-lg my-title-input">
+                    <option value="">Selecciona una categoría para tu post</option>
+                    <option value="js">JavaScript</option>
+                    <option value="react">React</option>
+                    <option value="web-development">Desarrollo Web</option>
+                    <option value="ux-ui">UX/UI</option>
+                    <option value="crypto">Desarrollo Blockchain</option>
+                </select>
+ */}

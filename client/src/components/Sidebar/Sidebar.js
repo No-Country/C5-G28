@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useState} from "react";
 import "./sidebar.css";
 
 //importando Link desde react route para poder navegar entre las secciones
@@ -8,11 +8,13 @@ import { types } from "../../store/storeReducer";
 const Sidebar = () => {
   const {user} = useContext(StoreContext);
   const { dispatch } = useContext(StoreContext);    
- 
-   if (!user.user.id) {
+
+   if (user.length === 0) {
     return;
   }
-   
+   if (user.user.id === null){
+     return;
+   }
   return (
     <nav className="main-menu" style={{ position: "fixed" }}>
       <ul>

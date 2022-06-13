@@ -8,11 +8,11 @@ import { types } from "../../store/storeReducer";
 const Sidebar = () => {
   const {user} = useContext(StoreContext);
   const { dispatch } = useContext(StoreContext);    
-
+ 
    if (!user.user.id) {
     return;
   }
-  
+   
   return (
     <nav className="main-menu" style={{ position: "fixed" }}>
       <ul>

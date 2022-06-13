@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import "./sidebar.css";
 
 //importando Link desde react route para poder navegar entre las secciones
@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import { StoreContext } from "../../store/storeProvider";
 import { types } from "../../store/storeReducer";
 const Sidebar = () => {
-  const {user} = useContext(StoreContext);
-  const { dispatch } = useContext(StoreContext);    
+  const { user } = useContext(StoreContext);
+  const { dispatch } = useContext(StoreContext);
 
-   if (!user.user.id) {
-    return;
-  }
-  
+  //  if (!user.user.id) {
+  //   return;
+  // }
+
   return (
     <nav className="main-menu" style={{ position: "fixed" }}>
       <ul>
@@ -21,13 +21,18 @@ const Sidebar = () => {
             <li>
               <Link to="/home">
                 {/* <i className="fa"> */}
-                <img src="../LogoF.png" alt="" style={{ marginTop:'20px' }} className="logo" />
+                <img
+                  src="../LogoF.png"
+                  alt=""
+                  style={{ marginTop: "20px" }}
+                  className="logo"
+                />
                 {/* </i> */}
-                <span className="nav-text" style={{ height:'91px' }}>
+                <span className="nav-text" style={{ height: "91px" }}>
                   JuniorCoderBook
                 </span>
               </Link>
-             {/*  <Link to="/verificacion">Veri</Link> */}
+              {/*  <Link to="/verificacion">Veri</Link> */}
             </li>
           </div>
           <div>
@@ -63,13 +68,26 @@ const Sidebar = () => {
             </li>
           </div>
 
-          <div className="logout"  onClick={() => {dispatch({type:types.authLogOut})}} >
+          <div
+            className="logout"
+            onClick={() => {
+              dispatch({ type: types.authLogOut });
+            }}
+          >
             <li>
               <a href="/">
                 {/* <i className="fa"> */}
-                <img src="../profile 1.png" alt="" style={{ marginTop: "22px"}} className="logo2" />
+                <img
+                  src="../profile 1.png"
+                  alt=""
+                  style={{ marginTop: "22px" }}
+                  className="logo2"
+                />
                 {/* </i> */}
-                <span className="nav-text" style={{ padding: "10px",width:'250px',height:'91px' }}>
+                <span
+                  className="nav-text"
+                  style={{ padding: "10px", width: "250px", height: "91px" }}
+                >
                   Log-out
                 </span>
               </a>

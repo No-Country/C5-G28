@@ -185,6 +185,7 @@ export const dislike = (req, res) => {
 };
 
 export const getByCategories = (req, res) => {
+  console.log(req.params);
   let category = req.params.category;
 
   PostModel.find({ categories: category }).exec((error, post) => {

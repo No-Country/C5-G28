@@ -42,7 +42,7 @@ const MakeAPost = () => {
                     title:values.title,
                     categories:values.categories,
                     content:values.content,
-                    urlPhoto:values.content
+                    urlPhoto:values.urlPhoto
                 }).then(res => {
                     console.log(res)
                     MySwal.fire({title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})

@@ -1,32 +1,66 @@
 import React,{useContext} from 'react';
 import { Link } from "react-router-dom";
-import LoginImage from '../assets/img/loginImg.png';
-import GoogleBtn from '../components/SocialButtons/googleBtn';
-import FacebookBtn from '../components/SocialButtons/facebookBtn';
 import { useNavigate } from 'react-router-dom';
-import '../components/SocialButtons/social.css';
-import { UserContext } from '../hooks/UserContext';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
+import LoginImage from '../assets/img/loginImg.png';
+import GoogleBtn from '../components/SocialButtons/GoogleBtn';
+import FacebookBtn from '../components/SocialButtons/FacebookBtn';
+import { StoreContext } from '../store/storeProvider';
+import { types } from '../store/storeReducer';
+
+
 import "../styles/login.css";
-
-
+import '../components/SocialButtons/social.css';
 function Login() {
-    let Navigate = useNavigate();
-    const {setUser} = useContext(UserContext);
-    const handleSubmit = e => {
-        e.preventDefault();
-        let email = e.target.email.value;
-        let password = e.target.password.value;
+        const MySwal = withReactContent(Swal)
+        const { dispatch } = useContext(StoreContext);
+  
+        let Navigate = useNavigate();
 
-        if(email === '1' && password ==='1'){
-            console.log('funka')
-            setUser(true)
-            Navigate('/home')
+         const {handleSubmit,errors,touched,getFieldProps} = useFormik({
+        initialValues:{
+            email:'',
+            password:''
+        },
+        onSubmit:values => {
+            try{
+                console.log(values)
+                axios.post(
+                    'http://localhost:3001/api/auth/signin',
+                    {email:values.email,password:values.password}
+                    ).then(res => {
+                        let {id,token,userName,urlProfile} = res.data;
+                        dispatch(loginState(id,token,userName,urlProfile));
+                        //MySwal.fire({title:<h2> Logueado </h2>}).then(()=>{})
+                        Navigate('/home')
+                    }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
+            }catch(error){
+                console.log(error)
+            } 
+        },
+        validationSchema:Yup.object({
+            email:Yup.string().email('formato no valido').required('email requerido'),
+            password:Yup.string().required('password requerido')
+        })
+    })
+            
+        
+
+        const loginState = (id,token,userName,urlProfile) =>{
+            return{
+                type:types.authLogIn,
+                payload:{id:id,token:token,userName:userName,urlProfile:urlProfile}
+            }
         }
-    }
 
     return (
         <section className="form-section my-containter">
-            <div className="container">            
+            <div className="container" style={{display:'grid'}}>            
                 <div className="row justify-content-center">
 
                     
@@ -47,15 +81,17 @@ function Login() {
                                     </div>
                                 </div>
 
-                                <form onSubmit={handleSubmit}className="signin-form">
+                                <form onSubmit={handleSubmit} className="signin-form">
 
                                     <div className="form-group mb-2">
-                                        <input className="form-control" type="text" name="email" placeholder="Ingresa tu e-mail" required />
+                                        <input className="form-control" type="text" {...getFieldProps('email')} placeholder="Ingresa tu e-mail" required />
                                     </div>
 
                                     <div className="form-group mb-2">
-                                        <input className="form-control" type="password" name="password" placeholder="Ingresa tu contraseña" required />
+                                        <input className="form-control" type="password" {...getFieldProps('password')} placeholder="Ingresa tu contraseña" required />
                                     </div>
+                                    {touched.email && errors.email && <span> {errors.email} </span>}
+                                    {touched.password && errors.password && <span> {errors.password} </span>}
                                     <div className="w-100 text-md-right">
                                         <a href="/" className='link contrasena-olvidada'>¿Has olvidado tu contraseña?</a>
                                     </div>

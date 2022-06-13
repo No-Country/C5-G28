@@ -6,14 +6,11 @@ import { transporter } from "../libs/mailer";
 
 // Sign Up
 export const signUp = async (req, res) => {
-  console.log(req.body.username)
-  console.log(req.body.email)
-  console.log(req.body.password)
-  console.log(req.body.roles)
-  console.log(req.body.bornDate)
-  try {
-    const { username, email, password, roles, bornDate } = req.body;
+  console.log(req.body)
 
+  try {
+    const { username, email, password, roles, bornDate,urlProfile } = req.body;
+    console.log(bornDate)
     const userExists = await UserModel.findOne({ email });
 
     if (userExists)
@@ -23,6 +20,7 @@ export const signUp = async (req, res) => {
       username,
       email,
       password: await UserModel.encryptPassword(password),
+      urlProfile
     });
 
     // Evaluo si el usuario tiene al menos 12 años
@@ -96,7 +94,7 @@ export const signIn = async (req, res) => {
 
     if (!userExists.confirmedAccount)
       return res.status(400).json({ message: "No confirmed account" });
-
+    console.log(userExists)
     const matchPassword = await UserModel.comparePassword(
       password,
       userExists.password
@@ -110,8 +108,10 @@ export const signIn = async (req, res) => {
     const token = jwt.sign({ id: userExists._id }, process.env.JWT_SECRET, {
       expiresIn: 86400,
     });
-
-    return res.status(200).json({ token, message: "SignIn succesfully" });
+    let urlProfile=userExists.urlProfile;
+    let userName = userExists.username;
+    let id = userExists.id;
+    return res.status(200).json({ token,urlProfile,userName,id, message: "SignIn succesfully" });
   } catch (error) {
     return res.status(400).json({ message: "Somethin went wrong, try again" });
   }
@@ -238,8 +238,48 @@ export const confirmAccount = async (req, res) => {
     // Guardo los datos actualizados
     await userExists.save();
 
-    return res.status(200).json({ message: "Account confirmed", token });
+    return res.status(200).json({ message: `<h2>Account confirmed, click <a href=\"http://localhost:3000\">here</a> to login </h2>`});
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong, try again" });
   }
 };
+
+export const edit = async(req,res) =>{
+  let { _id,username, email } = req.body;
+  try {
+      if (!username || !email ) {
+          return res.status(400).json({
+              status: 'error',
+              message: "Complet username,email"
+          });
+      }
+      let params = req.body;
+      if(email ){
+          await UserModel.findByIdAndUpdate(
+              {_id:_id},
+              params,
+              {new:true},
+              (error,postUpdated)=>{
+                console.log(error)
+                  if(error){
+                      return res.status(500).send({
+                          status:'error',
+                          message:'error after update'
+                      })
+                  }
+                  return res.status(200).json({
+                       status: 'succed', 
+                       post:postUpdated 
+                      });
+              }
+          )
+      }else{
+          return res.status(200).send({
+              status:'error',
+              message:'validation not succed'
+          })
+      }
+  } catch (error) {
+      console.log(error)
+  }
+}

@@ -14,7 +14,8 @@ const options = [
     { value: 'React', label: 'React' },
     { value: 'Desarrollo Web', label: 'Desarrollo Web' },
     { value: 'UX/UI', label: 'UX/UI' },
-    { value: 'Blockchain', label: 'Blockchain' }
+    { value: 'Blockchain', label: 'Blockchain' },
+    { value: 'AWS services', label: 'AWS services' }
   ]
 
 const MakeAPost = () => {

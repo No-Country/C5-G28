@@ -1,6 +1,7 @@
 const types = {
   authLogOut: "auth - logout",
   authLogIn: "auth - login",
+  authPreferences: "auth - preferences",
 };
 
 const initialStore = {
@@ -22,6 +23,12 @@ export const storeReducer = (state, action) => {
       return {
         user: action.payload,
       };
+
+    case types.authPreferences:
+      return {
+        user: action.payload,
+      };
+
     default:
       return state;
   }

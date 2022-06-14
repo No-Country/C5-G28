@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState, useContext } from "react";
 import { StoreContext } from "../store/storeProvider";
+import { types } from "../store/storeReducer";
 
 import axios from "axios";
 
@@ -13,7 +14,7 @@ const MainPost = (props) => {
   const [posts, setPosts] = useState(false);
   const [path, setPath] = useState("");
   const [active, setActive] = useState();
-  const user = useContext(StoreContext);
+  const { user, dispatch } = useContext(StoreContext);
   const URL = "http://localhost:3001/api/post";
 
   console.log(user);
@@ -37,15 +38,6 @@ const MainPost = (props) => {
       });
   };
 
-  // const prueba = (path) => {
-  //   // if (e.target.classList.contains("nav-link")) {
-  //   // const id = e.target.id;
-  //   // e.target.classList.add("active");
-  //   getPosts(path);
-  //   console.log("soy un nav");
-  //   // }
-  // };
-
   useEffect(() => {
     getPosts(path);
     setTimeout(() => {
@@ -53,6 +45,49 @@ const MainPost = (props) => {
       setIsLoaded(true);
     }, 4000);
   }, [path]);
+
+  const prueba = () => {
+    try {
+      axios
+        .put(
+          "localhost:3001/api/auth/edit",
+          {
+            _id: "62a09cab39698a3e860f33b7",
+            username: "juniorcoderbook",
+            email: "juniorcoderbook@gmail.com",
+            preferences: [
+              { categories: "JavaScript" },
+              { categories: "React" },
+              { categories: "Blockchain" },
+            ],
+          },
+          {
+            headers: { "Content-type": "application/json; charset=UTF-8" },
+          }
+        )
+        .then((res) => {
+          let { id, token, userName, urlProfile, preferences } = res.user;
+          dispatch(
+            preferencesState(id, token, userName, urlProfile, [...preferences])
+          );
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const preferencesState = (id, token, userName, urlProfile, preferences) => {
+    return {
+      type: types.authPreferences,
+      payload: {
+        id: id,
+        token: token,
+        userName: userName,
+        urlProfile: urlProfile,
+        preferences: preferences,
+      },
+    };
+  };
 
   return (
     <>
@@ -63,9 +98,7 @@ const MainPost = (props) => {
               className="nav-link "
               aria-current="page"
               href="#"
-              onClick={() => {
-                setPath("/categories/machine learning");
-              }}
+              onClick={prueba}
             >
               Siguiendo
             </a>

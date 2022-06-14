@@ -55,7 +55,7 @@ function Login() {
     }),
   });
 
-  const loginState = (id, token, userName, urlProfile) => {
+  const loginState = (id, token, userName, urlProfile, preferences) => {
     return {
       type: types.authLogIn,
       payload: {
@@ -63,6 +63,7 @@ function Login() {
         token: token,
         userName: userName,
         urlProfile: urlProfile,
+        preferences: preferences,
       },
     };
   };

@@ -254,6 +254,7 @@ export const confirmAccount = async (req, res) => {
 
 export const edit = async (req, res) => {
   let { _id, username, email } = req.body;
+  console.log(req.body);
   try {
     if (!username || !email) {
       return res.status(400).json({

@@ -5,7 +5,7 @@ const PostCardList = ({ posts }) => {
   return (
     <div>
       {posts ? (
-        posts.map((post) => <PostCard key={post._id} post={post} />)
+        posts.map((post, index) => <PostCard key={index} post={post} />)
       ) : (
         <div> No se encontraron post</div>
       )}

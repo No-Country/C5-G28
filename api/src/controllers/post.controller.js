@@ -206,3 +206,25 @@ export const getByCategories = (req, res) => {
     });
   });
 };
+
+export const getAll = (req, res) => {
+  PostModel.find()
+    .sort({ date: -1 })
+    .exec((error, post) => {
+      if (error) {
+        return res.status(500).send({
+          status: "error",
+          message: "error",
+        });
+      }
+      if (!post || post.length <= 0) {
+        return res.status(500).send({
+          status: "result",
+          message: "No results",
+        });
+      }
+      return res.status(200).send({
+        post,
+      });
+    });
+};

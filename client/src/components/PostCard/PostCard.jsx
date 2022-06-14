@@ -3,9 +3,8 @@ import React from "react";
 import "./PostCard.css";
 import { Link } from "react-router-dom";
 
-export const PostCard = ({ posts }) => {
-  console.log(posts);
-  const { _id: id, username, title, content, likes } = posts;
+export const PostCard = ({ post }) => {
+  const { _id: id, username, title, content, likes, urlPhoto } = post;
 
   return (
     <Link to="/post" className="color">
@@ -62,8 +61,8 @@ export const PostCard = ({ posts }) => {
         <div className="col-md-3 d-none d-md-block">
           <img
             style={{ width: "100%" }}
-            src="https://media.istockphoto.com/photos/positive-woman-video-calling-using-laptop-at-home-picture-id1333405308?k=20&m=1333405308&s=612x612&w=0&h=dVMykfJjxolA8Pu0-narX694yHAWSZyZerKvvI6XfCA="
-            alt="Trendy Pants and Shoes"
+            src={urlPhoto}
+            alt=""
             className="img-fluid rounded-start"
           />
         </div>

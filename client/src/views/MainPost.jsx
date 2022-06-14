@@ -9,59 +9,81 @@ import "./css/MainPost.css";
 
 const MainPost = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState(false);
+  const [path, setPath] = useState("");
+  const [active, setActive] = useState();
+  const URL = "http://localhost:3001/api/post";
 
-  // const getPostData = async () => {
-  //   const data = await fetch(
-  //     "http://localhost:3001/api/post/categories/machine learning"
-  //   );
-  //   const response = await data.json();
-  //   console.log(response.post);
-  //   setPosts(response.post);
-  //   setTimeout(() => {
-  //     setIsLoaded(true);
-  //   }, 3000);
-  // };
-  // getPostData();
-
-  useEffect(() => {
-    setIsLoaded(false);
+  const getPosts = (path) => {
+    console.log(path);
     axios({
       method: "get",
-      url: "http://localhost:3001/api/post/categories/machine learning",
+      url: `${URL}${path}`,
     })
       .then((response) => {
         const { data } = response;
-        return data.post;
+
+        return data.post.slice(0, 4);
       })
       .then((response) => {
-        console.log(response);
         setPosts(response);
-        setTimeout(() => {
-          setIsLoaded(true);
-        }, 4000);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  };
+
+  // const prueba = (path) => {
+  //   // if (e.target.classList.contains("nav-link")) {
+  //   // const id = e.target.id;
+  //   // e.target.classList.add("active");
+  //   getPosts(path);
+  //   console.log("soy un nav");
+  //   // }
+  // };
+
+  useEffect(() => {
+    getPosts(path);
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 4000);
+  }, [path]);
 
   return (
     <>
       <div className="mt-5 pb-5">
         <ul className="nav nav-tabs nav-post">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">
+            <a
+              className="nav-link "
+              aria-current="page"
+              href="#"
+              onClick={() => {
+                setPath("/categories/machine learning");
+              }}
+            >
               Siguiendo
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a
+              className="nav-link"
+              href="#"
+              onClick={() => {
+                setPath("/categories/React");
+              }}
+            >
               Recomendados
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a
+              className="nav-link active"
+              href="#"
+              onClick={() => {
+                setPath("");
+              }}
+            >
               Novedades
             </a>
           </li>

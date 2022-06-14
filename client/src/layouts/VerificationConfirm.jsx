@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import "../styles/login.css";
 import bgOrange from '../assets/img/imageOrange-bg.png';
 import guyImg from '../assets/img/veri-guy.svg';
@@ -7,17 +7,24 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 const VerificationConfirm = () => {
+
     const userConfirmKey = useParams()
-    const url = `http://localhost:3001/api/auth/confirm-account/${userConfirmKey.confirm}`
-
-    try{
-        axios
-        .get(url)
-        .then(res=>{ console.log(res)})
-    }catch(error){
-        console.log(error)
+    const url = `http://localhost:3001/api/auth/confirm-account/`
+    const sendConfirm = () =>{
+        try{
+            axios
+            .put(url,{confirmToken:userConfirmKey.confirm})
+            .then(res=>{ console.log(res)})
+        }catch(error){
+            console.log(error)
+        }
     }
+    useEffect(() => {
+       sendConfirm();
+    }, []);
 
+   
+    console.log('renderizaciones')
     return(
         <div className="my-containter verificacion-container">
             <div className="verificacion-layer">

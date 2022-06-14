@@ -169,15 +169,16 @@ export const forgotPassword = async (req, res) => {
 
 export const createNewPassword = async (req, res) => {
   try {
+
     const { password } = req.body;
     const resetToken = req.headers["reset-token"];
 
     if (!(password && resetToken))
       return res.status(403).json({ message: "All the fields are required" });
-    console.log("hola")
+
 
     const decoded = jwt.verify(resetToken, process.env.JWT_SECRET);
-    
+
     const userExists = await UserModel.findById(decoded.id);
     if (!userExists)
       return res.status(404).json({ message: "User not exists" });
@@ -198,6 +199,7 @@ export const createNewPassword = async (req, res) => {
 
     return res.status(200).json({ message: "Password changed succesfully" });
   } catch (error) {
+
     return res.status(400).json({ message: "Something went wrong, try again" });
   }
 };
@@ -205,7 +207,7 @@ export const createNewPassword = async (req, res) => {
 export const confirmAccount = async (req, res) => {
   try {
     const { confirmToken } = req.body;
-    console.log(confirmToken)
+
     if (!confirmToken)
       return res.status(403).json({ message: "No token provided" });
 
@@ -246,6 +248,7 @@ export const confirmAccount = async (req, res) => {
 
 export const edit = async(req,res) =>{
   let { _id,username, email } = req.body;
+  console.log(_id,username,email)
   try {
       if (!username || !email ) {
           return res.status(400).json({

@@ -4,10 +4,10 @@ import "./sidebar.css";
 //importando Link desde react route para poder navegar entre las secciones
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../store/storeProvider";
-import { types } from "../../store/storeReducer";
+import { storeReducer, types } from "../../store/storeReducer";
 const Sidebar = () => {
-  const {user} = useContext(StoreContext);
-  const { dispatch } = useContext(StoreContext);    
+  const {user,dispatch} = useContext(StoreContext);
+   
 
    if (user.length === 0) {
     return;
@@ -15,6 +15,7 @@ const Sidebar = () => {
    if (user.user.id === null){
      return;
    }
+   console.log(user.user.urlProfile)
   return (
     <nav className="main-menu" style={{ position: "fixed" }}>
       <ul>
@@ -69,7 +70,7 @@ const Sidebar = () => {
             <li>
               <a href="/">
                 {/* <i className="fa"> */}
-                <img src="../profile 1.png" alt="" style={{ marginTop: "22px"}} className="logo2" />
+                <img src={user.user.urlProfile} alt="" style={{ marginTop: "22px"}} className="logo2" />
                 {/* </i> */}
                 <span className="nav-text" style={{ padding: "10px",width:'250px',height:'91px' }}>
                   Log-out

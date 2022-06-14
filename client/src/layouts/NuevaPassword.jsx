@@ -13,7 +13,6 @@ import '../components/SocialButtons/social.css';
 
 function NuevaPassword() {
     const {confirm} = useParams()
-    console.log(confirm)
     const MySwal = withReactContent(Swal)
     let Navigate = useNavigate();
     const {handleSubmit,errors,touched,getFieldProps} = useFormik({
@@ -24,24 +23,16 @@ function NuevaPassword() {
         onSubmit:values => {
 
             try{
-                console.log(values.password)
-                console.log(confirm)
+
                 axios.put(
-                    'http://localhost:3001/api/auth/new-password/',
-                    {
-                        password: values.password,
-                    
-                    },
-                    {
-                        headers:{
-                            'reset-token':confirm
-                        }
-                    }  
+                    'http://localhost:3001/api/auth/new-password',
+                    {password: values.password},
+                    {headers:{'Content-Type': 'application/json','reset-token':confirm}}  
                     ).then(res => {
                         Navigate('/verificacion')
-                    }).catch(error => /* MySwal.fire({title:<h2> Credenciales erroneas </h2>}) */console.log(error))
+                    }).catch(error =>  MySwal.fire({title:<h2> surgio un problema, intenta nuevamente </h2>}))
             }catch(error){
-                console.log(error)
+                MySwal.fire({title:<h2> surgio un problema </h2>})
             } 
 
         },

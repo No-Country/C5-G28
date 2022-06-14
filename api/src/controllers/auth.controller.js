@@ -112,7 +112,7 @@ export const signIn = async (req, res) => {
     let urlProfile=userExists.urlProfile;
     let userName = userExists.username;
     let id = userExists.id;
-    return res.status(200).json({ token,urlProfile,userName,id, message: "SignIn succesfully" });
+    return res.status(200).json({ token,urlProfile,userName,id,email , message: "SignIn succesfully" });
   } catch (error) {
     return res.status(400).json({ message: "Somethin went wrong, try again" });
   }

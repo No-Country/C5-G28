@@ -34,8 +34,9 @@ function Login() {
                     'http://localhost:3001/api/auth/signin',
                     {email:values.email,password:values.password}
                     ).then(res => {
-                        let {id,token,userName,urlProfile} = res.data;
-                        dispatch(loginState(id,token,userName,urlProfile));
+                        let {id,token,userName,urlProfile,email} = res.data;
+                        console.log(res.data)
+                        dispatch(loginState(id,token,userName,urlProfile,email));
                         //MySwal.fire({title:<h2> Logueado </h2>}).then(()=>{})
                         Navigate('/home')
                     }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
@@ -51,10 +52,10 @@ function Login() {
             
         
 
-        const loginState = (id,token,userName,urlProfile) =>{
+        const loginState = (id,token,userName,urlProfile,email) =>{
             return{
                 type:types.authLogIn,
-                payload:{id:id,token:token,userName:userName,urlProfile:urlProfile}
+                payload:{id:id,token:token,userName:userName,urlProfile:urlProfile,email:email}
             }
         }
 

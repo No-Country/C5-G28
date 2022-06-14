@@ -1,14 +1,15 @@
  const types = {
     authLogOut: 'auth - logout',
-    authLogIn: 'auth - login'
+    authLogIn: 'auth - login',
+    updateProfile: 'update - profile'
 }
 
 const initialStore = {
-    id:null,token:null,username:null,urlProfile:null
+    id:null,token:null,username:null,urlProfile:null,email:null
 }
 
 export const storeReducer = (state,action) =>{
-
+console.log(action)
     switch(action.type){
         case types.authLogOut:
             return{
@@ -16,6 +17,10 @@ export const storeReducer = (state,action) =>{
             };
             
         case types.authLogIn:
+            return{
+                user:action.payload
+            }
+        case types.updateProfile:
             return{
                 user:action.payload
             }

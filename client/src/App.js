@@ -1,5 +1,3 @@
-
-
 import "./App.css";
 import StoreProvider from "./store/storeProvider";
 import { AppRouter } from "./routes/AppRouter";

@@ -11,6 +11,7 @@ import Posts from "../layouts/Post";
 import SavedElements from "../layouts/SavedElements";
 import Verification from '../layouts/Verificacion';
 import LecturaPost from "../layouts/LecturaPost";
+import Notification from "../layouts/Notification";
 
 //importando react router para especificar las rutas a las secciones
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -30,6 +31,7 @@ export const AppRouter = () => {
             <Route element={<Posts />} path="/posts" />
             <Route element={<UserProfile />} path="/perfil" />
             <Route element={<SavedElements />} path="/guardados" />
+            <Route element={<Notification/>} path="/notification" />
           </Route>
           <Route element={<Login />} path="/" />
           <Route element={<Registro />} path="/registrarse" />

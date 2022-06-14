@@ -51,17 +51,17 @@ const Sidebar = () => {
                 <span className="nav-text">Post</span>
               </Link>
             </li>
-            {/* <li className="has-subnav">
+             <li className="has-subnav">
               <Link to="/perfil">
-                <i className="fa fa-users" aria-hidden="true"></i>
+                <i className="fa fa-gear" aria-hidden="true"></i>
                 <span className="nav-text">Usuarios</span>
               </Link>
-            </li> */}
+            </li> 
             <li>
-              <a href="#">
+            <Link to="/notification">
                 <i className="fa fa-bell" aria-hidden="true"></i>
                 <span className="nav-text">Notificaciones</span>
-              </a>
+                </ Link >
             </li>
           </div>
 

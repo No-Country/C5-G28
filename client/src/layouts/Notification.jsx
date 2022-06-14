@@ -5,7 +5,6 @@ import "../styles/notification.module.css"
 function Notification() {
     return (
         <>
-            <Sidebar />
             <section className="  my-containter" >
                 <div className="container">
                     <div className="row justify-content-center d-flex ">

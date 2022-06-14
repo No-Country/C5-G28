@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Sidebar from '../components/Sidebar/Sidebar';
 import "../styles/UserProfile.module.css";
 
@@ -60,7 +60,6 @@ const UserProfile = () => {
 
     return (
         <React.Fragment>
-            <Sidebar />
             <div className='container  '>
                 <h1> Configuracion de </h1>
                <hr />
@@ -70,21 +69,21 @@ const UserProfile = () => {
                 <form className="container" onSubmit={""}>
                     <div >
                         <div className="form-group  mb-4 row">
-                            <label for="inputPassword" class="col-sm-4 col-form-label">NOMBRE Y APELLIDO</label>
+                            <label for="inputPassword" class="col-sm-4 col-form-label">Usuario</label>
                             <input className="form-control col-sm-5" type="text" required />
                         </div>
                         <div className="form-group mb-4 row">
-                            <label for="inputPassword" class="col-sm-4 col-form-label">FECHA DE NACIMIENTO</label>
+                            <label for="inputPassword" class="col-sm-4 col-form-label">Url de foto de perfil</label>
                             <input className="form-control col-sm-5" type="date" required />
                         </div>
                         <div className="form-group mb-4 row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label"> CORREO ELECTRONICO</label>
+                        <label for="inputPassword" class="col-sm-4 col-form-label"> correo electronico</label>
                             <input className="form-control col-sm-5" type="email" required />
                         </div>
-                        <div className="form-group mb-4 row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label">CONTRASEñA</label>
+{/*                         <div className="form-group mb-4 row">
+                        <label for="inputPassword" class="col-sm-4 col-form-label">CONTRASEÑA</label>
                             <input className="form-control col-sm-5" type="password" required /> 
-                        </div>
+                        </div> */}
                         <div className="form-group mb-5">
                             <button type="submit" className=" btn btn-danger">  Guardar cambios </button>
                         </div>

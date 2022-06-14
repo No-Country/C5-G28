@@ -185,7 +185,6 @@ export const dislike = (req, res) => {
 };
 
 export const getByCategories = (req, res) => {
-  console.log(req.params);
   let category = req.params.category;
 
   PostModel.find({ categories: category }).exec((error, post) => {
@@ -205,26 +204,4 @@ export const getByCategories = (req, res) => {
       post,
     });
   });
-};
-
-export const getAll = (req, res) => {
-  PostModel.find()
-    .sort({ date: -1 })
-    .exec((error, post) => {
-      if (error) {
-        return res.status(500).send({
-          status: "error",
-          message: "error",
-        });
-      }
-      if (!post || post.length <= 0) {
-        return res.status(500).send({
-          status: "result",
-          message: "No results",
-        });
-      }
-      return res.status(200).send({
-        post,
-      });
-    });
 };

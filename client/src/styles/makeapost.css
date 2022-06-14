@@ -62,14 +62,14 @@
     display: block;
     width: 100%;
     border: none;
-     
+    margin-top:0.8em;
     
     
 }
 
 .my-title-input{
     border-bottom: thin solid #00000050;
-    width: 98%;
+    /* width: 98%; */
     color:black;
     font-weight: 600;
     font-size: clamp(.85rem, 2vw, 2rem);
@@ -106,11 +106,10 @@ select > option {
    
 
 .my-text-area{
-    overflow-y:scroll;
     word-wrap: break-word;
     word-break: break-word;
     resize: none;
-    padding-top: 1rem;
+    /* padding-top: 0.6rem; */
     font-size: clamp(.8rem, 2vw, 1rem);
 }
 

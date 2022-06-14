@@ -93,7 +93,7 @@ function Login() {
                                     {touched.email && errors.email && <span> {errors.email} </span>}
                                     {touched.password && errors.password && <span> {errors.password} </span>}
                                     <div className="w-100 text-md-right">
-                                        <a href="/" className='link contrasena-olvidada'>¿Has olvidado tu contraseña?</a>
+                                        <Link to="/recuperarpassword" className='link contrasena-olvidada'>¿Has olvidado tu contraseña?</Link>
                                     </div>
                                     <div>
                                         <button type="submit" className="submit-btn form-control btn my-btn-primary submit">Ingresar</button>

@@ -15,7 +15,9 @@ import LecturaPost from "../layouts/LecturaPost";
 //importando react router para especificar las rutas a las secciones
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoutes from "./PrivateRoutes";
-
+import VerificationConfirm from "../layouts/VerificationConfirm";
+import NuevaPassword from "../layouts/NuevaPassword";
+import RecuperarPassword from '../layouts/RecuperarPassword';
 export const AppRouter = () => {
   return (
     <>
@@ -32,6 +34,9 @@ export const AppRouter = () => {
           <Route element={<Login />} path="/" />
           <Route element={<Registro />} path="/registrarse" />
           <Route element={<Verification />} path="/verificacion" />
+          <Route element={<VerificationConfirm />} path="/verificacion/:confirm" />
+          <Route element={<RecuperarPassword />} path="/recuperarpassword" />
+          <Route element={<NuevaPassword />} path="/nuevapassword/:confirm" />
         </Routes>
       </Router>
     </>

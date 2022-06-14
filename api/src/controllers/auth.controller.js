@@ -6,11 +6,10 @@ import { transporter } from "../libs/mailer";
 
 // Sign Up
 export const signUp = async (req, res) => {
-  console.log(req.body)
 
   try {
     const { username, email, password, roles, bornDate,urlProfile } = req.body;
-    console.log(bornDate)
+
     const userExists = await UserModel.findOne({ email });
 
     if (userExists)
@@ -75,7 +74,7 @@ export const signUp = async (req, res) => {
     });
 
     return res.status(200).json({
-      message: "Check your email for a link to confirm your account",
+      message: "Check your email for a link to confirm your account"
     });
   } catch (error) {
     console.log(error)
@@ -94,12 +93,12 @@ export const signIn = async (req, res) => {
 
     if (!userExists.confirmedAccount)
       return res.status(400).json({ message: "No confirmed account" });
-    console.log(userExists)
+
     const matchPassword = await UserModel.comparePassword(
       password,
       userExists.password
     );
-
+      console.log("1")
     if (!matchPassword)
       return res
         .status(401)
@@ -144,7 +143,7 @@ export const forgotPassword = async (req, res) => {
     );
 
     // Generacion de ruta frontend para este usuario
-    const verificationLink = `${process.env.VERIFICATION_LINK}${token}`;
+    const verificationLink = `${process.env.RESET_PASSWORD_LINK}${token}`;
 
     userExists.resetToken = token;
 
@@ -161,8 +160,7 @@ export const forgotPassword = async (req, res) => {
     });
 
     return res.status(200).json({
-      message: "Check your email for a link to reset your password",
-      verificationLink,
+      message: "Check your email for a link to reset your password"
     });
   } catch (error) {
     return res.status(400).json({ message: "Somethin went wrong, try again" });
@@ -171,14 +169,15 @@ export const forgotPassword = async (req, res) => {
 
 export const createNewPassword = async (req, res) => {
   try {
-    const { newPassword } = req.body;
+    const { password } = req.body;
     const resetToken = req.headers["reset-token"];
 
-    if (!(newPassword && resetToken))
+    if (!(password && resetToken))
       return res.status(403).json({ message: "All the fields are required" });
+    console.log("hola")
 
     const decoded = jwt.verify(resetToken, process.env.JWT_SECRET);
-
+    
     const userExists = await UserModel.findById(decoded.id);
     if (!userExists)
       return res.status(404).json({ message: "User not exists" });
@@ -193,7 +192,7 @@ export const createNewPassword = async (req, res) => {
     userExists.resetToken = undefined;
 
     // Reemplazo la contraseña
-    userExists.password = await UserModel.encryptPassword(newPassword);
+    userExists.password = await UserModel.encryptPassword(password);
 
     await userExists.save();
 
@@ -205,8 +204,8 @@ export const createNewPassword = async (req, res) => {
 
 export const confirmAccount = async (req, res) => {
   try {
-    const { confirmToken } = req.params;
-
+    const { confirmToken } = req.body;
+    console.log(confirmToken)
     if (!confirmToken)
       return res.status(403).json({ message: "No token provided" });
 
@@ -238,8 +237,9 @@ export const confirmAccount = async (req, res) => {
     // Guardo los datos actualizados
     await userExists.save();
 
-    return res.status(200).json({ message: "Account confirmed", token });
+    return res.status(200).json({ message: `Account confirmed`});
   } catch (error) {
+    console.log(error)
     return res.status(400).json({ message: "Something went wrong, try again" });
   }
 };
@@ -282,4 +282,4 @@ export const edit = async(req,res) =>{
   } catch (error) {
       console.log(error)
   }
-}
+} 

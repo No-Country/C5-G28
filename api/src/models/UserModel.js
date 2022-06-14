@@ -16,6 +16,9 @@ const userSchema = new Schema(
       unique: false,
     },
     bornDate: {
+      type: Date,
+    },
+    urlProfile: {
       type: String,
     },
     urlProfile: {

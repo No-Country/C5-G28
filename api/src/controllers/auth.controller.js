@@ -6,9 +6,8 @@ import { transporter } from "../libs/mailer";
 
 // Sign Up
 export const signUp = async (req, res) => {
-
   try {
-    const { username, email, password, roles, bornDate,urlProfile } = req.body;
+    const { username, email, password, roles, bornDate, urlProfile } = req.body;
 
     const userExists = await UserModel.findOne({ email });
 
@@ -19,7 +18,7 @@ export const signUp = async (req, res) => {
       username,
       email,
       password: await UserModel.encryptPassword(password),
-      urlProfile
+      urlProfile,
     });
 
     // Evaluo si el usuario tiene al menos 12 años
@@ -30,7 +29,7 @@ export const signUp = async (req, res) => {
       return res
         .status(400)
         .json({ message: "User must be over 12 years old" });
-        
+
     // Inserto edad en la base
     newUser.bornDate = parsedBornDate.toISOString().split("T")[0];
 
@@ -62,7 +61,7 @@ export const signUp = async (req, res) => {
     const verificationLink = `${process.env.CONFIRM_USER_LINK}${token}`;
 
     const savedUser = await newUser.save();
-    
+
     // Verification mail
     await transporter.sendMail({
       from: '"CONFIRM ACCOUNT" <juniorcoderbook@hotmail.com>', // sender address
@@ -74,10 +73,10 @@ export const signUp = async (req, res) => {
     });
 
     return res.status(200).json({
-      message: "Check your email for a link to confirm your account"
+      message: "Check your email for a link to confirm your account",
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(400).json({ message: "Somethin went wrong, try again" });
   }
 };
@@ -98,7 +97,7 @@ export const signIn = async (req, res) => {
       password,
       userExists.password
     );
-      console.log("1")
+    console.log("1");
     if (!matchPassword)
       return res
         .status(401)
@@ -107,10 +106,19 @@ export const signIn = async (req, res) => {
     const token = jwt.sign({ id: userExists._id }, process.env.JWT_SECRET, {
       expiresIn: 86400,
     });
-    let urlProfile=userExists.urlProfile;
+    let urlProfile = userExists.urlProfile;
     let userName = userExists.username;
     let id = userExists.id;
-    return res.status(200).json({ token,urlProfile,userName,id, message: "SignIn succesfully" });
+    let preferences = userExists.preferences;
+    console.log(preferences);
+    return res.status(200).json({
+      token,
+      preferences,
+      urlProfile,
+      userName,
+      id,
+      message: "SignIn succesfully",
+    });
   } catch (error) {
     return res.status(400).json({ message: "Somethin went wrong, try again" });
   }
@@ -160,7 +168,7 @@ export const forgotPassword = async (req, res) => {
     });
 
     return res.status(200).json({
-      message: "Check your email for a link to reset your password"
+      message: "Check your email for a link to reset your password",
     });
   } catch (error) {
     return res.status(400).json({ message: "Somethin went wrong, try again" });
@@ -174,10 +182,10 @@ export const createNewPassword = async (req, res) => {
 
     if (!(password && resetToken))
       return res.status(403).json({ message: "All the fields are required" });
-    console.log("hola")
+    console.log("hola");
 
     const decoded = jwt.verify(resetToken, process.env.JWT_SECRET);
-    
+
     const userExists = await UserModel.findById(decoded.id);
     if (!userExists)
       return res.status(404).json({ message: "User not exists" });
@@ -205,7 +213,7 @@ export const createNewPassword = async (req, res) => {
 export const confirmAccount = async (req, res) => {
   try {
     const { confirmToken } = req.body;
-    console.log(confirmToken)
+    console.log(confirmToken);
     if (!confirmToken)
       return res.status(403).json({ message: "No token provided" });
 
@@ -237,49 +245,49 @@ export const confirmAccount = async (req, res) => {
     // Guardo los datos actualizados
     await userExists.save();
 
-    return res.status(200).json({ message: `Account confirmed`});
+    return res.status(200).json({ message: `Account confirmed` });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(400).json({ message: "Something went wrong, try again" });
   }
 };
 
-export const edit = async(req,res) =>{
-  let { _id,username, email } = req.body;
+export const edit = async (req, res) => {
+  let { _id, username, email } = req.body;
   try {
-      if (!username || !email ) {
-          return res.status(400).json({
-              status: 'error',
-              message: "Complet username,email"
+    if (!username || !email) {
+      return res.status(400).json({
+        status: "error",
+        message: "Complet username,email",
+      });
+    }
+    let params = req.body;
+    if (email) {
+      await UserModel.findByIdAndUpdate(
+        { _id: _id },
+        params,
+        { new: true },
+        (error, postUpdated) => {
+          console.log(error);
+          if (error) {
+            return res.status(500).send({
+              status: "error",
+              message: "error after update",
+            });
+          }
+          return res.status(200).json({
+            status: "succed",
+            post: postUpdated,
           });
-      }
-      let params = req.body;
-      if(email ){
-          await UserModel.findByIdAndUpdate(
-              {_id:_id},
-              params,
-              {new:true},
-              (error,postUpdated)=>{
-                console.log(error)
-                  if(error){
-                      return res.status(500).send({
-                          status:'error',
-                          message:'error after update'
-                      })
-                  }
-                  return res.status(200).json({
-                       status: 'succed', 
-                       post:postUpdated 
-                      });
-              }
-          )
-      }else{
-          return res.status(200).send({
-              status:'error',
-              message:'validation not succed'
-          })
-      }
+        }
+      );
+    } else {
+      return res.status(200).send({
+        status: "error",
+        message: "validation not succed",
+      });
+    }
   } catch (error) {
-      console.log(error)
+    console.log(error);
   }
-} 
+};

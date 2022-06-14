@@ -9,7 +9,6 @@ import MostReaded from "../views/MostReaded";
 import FollowList from "../views/FollowList";
 import Preferences from "../components/Preferences/Preferences";
 import Footer from "../components/Footer/Footer";
-// import UserCard from '../components/UserCard/Usercard'
 
 const Home = () => {
   return (

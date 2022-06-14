@@ -1,5 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { StoreContext } from "../store/storeProvider";
 
 import axios from "axios";
 
@@ -12,7 +13,10 @@ const MainPost = (props) => {
   const [posts, setPosts] = useState(false);
   const [path, setPath] = useState("");
   const [active, setActive] = useState();
+  const user = useContext(StoreContext);
   const URL = "http://localhost:3001/api/post";
+
+  console.log(user);
 
   const getPosts = (path) => {
     console.log(path);
@@ -45,6 +49,7 @@ const MainPost = (props) => {
   useEffect(() => {
     getPosts(path);
     setTimeout(() => {
+      console.log(posts);
       setIsLoaded(true);
     }, 4000);
   }, [path]);
@@ -70,7 +75,7 @@ const MainPost = (props) => {
               className="nav-link"
               href="#"
               onClick={() => {
-                setPath("/categories/React");
+                setPath("/preferences");
               }}
             >
               Recomendados

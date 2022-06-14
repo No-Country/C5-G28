@@ -47,7 +47,7 @@ const userSchema = new Schema(
       type: [String],
     },
     preferences: {
-      type: [String],
+      type: [Object],
     },
     follows: {
       type: [String],

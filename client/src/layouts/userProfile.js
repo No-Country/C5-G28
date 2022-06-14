@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 
 const UserProfile = () => {
     return (
-        <h1>Perfil del Usuario</h1>
+        <div>
+            <h1>Perfil del Usuario</h1>
+            <Link to="/configuracion">Configuracion de Usuario</Link>
+        </div>
     )
 }
 

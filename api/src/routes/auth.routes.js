@@ -5,17 +5,19 @@ import {
   forgotPassword,
   createNewPassword,
   confirmAccount,
-  edit
+  edit,
+  editProfile
 } from "../controllers/auth.controller";
 
 const router = Router();
 //login Routes
 router.post("/signup", signUp);
 router.post("/signin", signIn);
-router.put("/confirm-account", confirmAccount);
+router.get("/confirm-account/:confirmToken", confirmAccount);
 router.put("/forgot-password", forgotPassword);
 router.put("/new-password", createNewPassword);
-router.put("/edit",edit);
+router.put("/edit/:id",edit);
+router.put("/editprofile",editProfile);
 
 
 export default router;

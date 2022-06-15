@@ -6,7 +6,7 @@ const PrivateRoutes = () => {
     const {user} = useContext(StoreContext);
     
     return(
-        user.user.id ? <Outlet/> : <Navigate to="/"/>
+        user.id ? <Outlet/> : <Navigate to="/"/>
     )
 }
 

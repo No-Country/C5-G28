@@ -9,7 +9,7 @@ export const signUp = async (req, res) => {
 
   try {
     const { username, email, password, roles, bornDate,urlProfile } = req.body;
-
+    
     const userExists = await UserModel.findOne({ email });
 
     if (userExists)
@@ -74,7 +74,7 @@ export const signUp = async (req, res) => {
     });
 
     return res.status(200).json({
-      message: "Check your email for a link to confirm your account"
+      message: "Check your email for a link to confirm your account",
     });
   } catch (error) {
     console.log(error)
@@ -86,19 +86,18 @@ export const signUp = async (req, res) => {
 export const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-
     const userExists = await UserModel.findOne({ email }).populate("roles");
 
     if (!userExists) return res.status(404).json({ message: "User not found" });
 
     if (!userExists.confirmedAccount)
       return res.status(400).json({ message: "No confirmed account" });
-
+    console.log(userExists)
     const matchPassword = await UserModel.comparePassword(
       password,
       userExists.password
     );
-      console.log("1")
+
     if (!matchPassword)
       return res
         .status(401)
@@ -110,8 +109,12 @@ export const signIn = async (req, res) => {
     let urlProfile=userExists.urlProfile;
     let userName = userExists.username;
     let id = userExists.id;
-    return res.status(200).json({ token,urlProfile,userName,id, message: "SignIn succesfully" });
+    let bornDate = userExists.bornDate;
+  
+
+    return res.status(200).json({ token,userName,id,urlProfile,email,bornDate, message: "SignIn succesfully" });
   } catch (error) {
+    console.log(error)
     return res.status(400).json({ message: "Somethin went wrong, try again" });
   }
 };
@@ -143,7 +146,7 @@ export const forgotPassword = async (req, res) => {
     );
 
     // Generacion de ruta frontend para este usuario
-    const verificationLink = `${process.env.RESET_PASSWORD_LINK}${token}`;
+    const verificationLink = `${process.env.VERIFICATION_LINK}${token}`;
 
     userExists.resetToken = token;
 
@@ -160,7 +163,8 @@ export const forgotPassword = async (req, res) => {
     });
 
     return res.status(200).json({
-      message: "Check your email for a link to reset your password"
+      message: "Check your email for a link to reset your password",
+      verificationLink,
     });
   } catch (error) {
     return res.status(400).json({ message: "Somethin went wrong, try again" });
@@ -169,13 +173,11 @@ export const forgotPassword = async (req, res) => {
 
 export const createNewPassword = async (req, res) => {
   try {
-
-    const { password } = req.body;
+    const { newPassword } = req.body;
     const resetToken = req.headers["reset-token"];
 
-    if (!(password && resetToken))
+    if (!(newPassword && resetToken))
       return res.status(403).json({ message: "All the fields are required" });
-
 
     const decoded = jwt.verify(resetToken, process.env.JWT_SECRET);
 
@@ -193,20 +195,19 @@ export const createNewPassword = async (req, res) => {
     userExists.resetToken = undefined;
 
     // Reemplazo la contraseña
-    userExists.password = await UserModel.encryptPassword(password);
+    userExists.password = await UserModel.encryptPassword(newPassword);
 
     await userExists.save();
 
     return res.status(200).json({ message: "Password changed succesfully" });
   } catch (error) {
-
     return res.status(400).json({ message: "Something went wrong, try again" });
   }
 };
 
 export const confirmAccount = async (req, res) => {
   try {
-    const { confirmToken } = req.body;
+    const { confirmToken } = req.params;
 
     if (!confirmToken)
       return res.status(403).json({ message: "No token provided" });
@@ -239,9 +240,8 @@ export const confirmAccount = async (req, res) => {
     // Guardo los datos actualizados
     await userExists.save();
 
-    return res.status(200).json({ message: `Account confirmed`});
+    return res.status(200).json({ message: `<h2>Account confirmed, click <a href=\"http://localhost:3000\">here</a> to login </h2>`});
   } catch (error) {
-    console.log(error)
     return res.status(400).json({ message: "Something went wrong, try again" });
   }
 };
@@ -285,4 +285,48 @@ export const edit = async(req,res) =>{
   } catch (error) {
       console.log(error)
   }
-} 
+}
+
+export const editProfile = async(req,res) =>{
+  let { token,username, email } = req.body;
+  
+  try {
+    const {id} = jwt.verify(token, process.env.JWT_SECRET);
+
+       if (!username || !email ) {
+          return res.status(400).json({
+              status: 'error',
+              message: "Complet username,email"
+          });
+      }
+      let params = req.body;
+      if(email ){
+           UserModel.findByIdAndUpdate(
+              {_id:id},
+              params,
+              {new:true},
+              (error,postUpdated)=>{
+                  if(error){
+                      return res.status(500).send({
+                          status:'error',
+                          message:'error after update'
+                      })
+                  }
+                  
+                  return res.status(200).json({
+                       status: 'succed', 
+                       user:postUpdated 
+                      });
+              }
+          )
+      }else{
+          return res.status(200).send({
+              status:'error',
+              message:'validation not succed'
+          })
+      } 
+  } catch (error) {
+    console.log('entro error')
+      console.log(error)
+  }
+}

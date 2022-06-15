@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 
 import PostCard from "../components/PostCard/PostCard";
-
+import { StoreContext } from "../store/storeProvider";
 import "./css/MainPost.css";
 
 const MainPost = (props) => {
+  const {user} = useContext(StoreContext);
+  console.log(user);
   return (
     <div className="mt-5 pb-5">
       <ul className="nav nav-tabs nav-post">

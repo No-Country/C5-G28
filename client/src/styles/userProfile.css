@@ -1,0 +1,60 @@
+
+.form-container {
+    margin-top: 5%;
+}
+
+header {
+    padding: 10px 0;
+}
+
+.userImg {
+    margin-top: 5%;
+}
+
+hr {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+form {
+    padding-top: 5%;
+}
+
+.form-control:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(238 80 7 / 25%);
+    border-color: #ee5007;
+}
+
+.password-icon {
+    float: right;
+    position: relative;
+    margin: -50px 5px 0 0;
+    cursor: pointer;
+}
+
+.fa-icon {
+    height: auto !important;
+}
+
+.btn-ConfigUser {
+    background: #ee5007;
+}
+
+.btn-ConfigUser:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Manejo de Errores CSS */
+
+.valid-feedback {
+    display: block;
+}
+
+.invalid-feedback {
+    display: block;
+}

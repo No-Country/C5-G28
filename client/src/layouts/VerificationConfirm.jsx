@@ -13,8 +13,8 @@ const VerificationConfirm = () => {
     const sendConfirm = () =>{
         try{
             axios
-            .put(url,{confirmToken:userConfirmKey.confirm})
-            .then(res=>{ console.log(res)})
+            .get(url+userConfirmKey.confirm)
+            .then(res=>{})
         }catch(error){
             console.log(error)
         }
@@ -22,9 +22,6 @@ const VerificationConfirm = () => {
     useEffect(() => {
        sendConfirm();
     }, []);
-
-   
-    console.log('renderizaciones')
     return(
         <div className="my-containter verificacion-container">
             <div className="verificacion-layer">

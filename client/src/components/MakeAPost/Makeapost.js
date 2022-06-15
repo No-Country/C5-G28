@@ -33,7 +33,7 @@ const MakeAPost = () => {
     },  
     onSubmit:(values) => {
         try{
-            values.username = user.user.userName;
+            values.username = user.userName;
             
             axios.post(
                 'http://localhost:3001/api/post/save/',

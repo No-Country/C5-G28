@@ -81,11 +81,11 @@ const UserProfile = () => {
         <>
                 <div className="mt-5 w-75 m-auto form-container">
             <header>
-                 <div className="col-md-3 d-flex justify-content-center d-lg-none d-xl-block">
+                 <div className="col-md-12 d-flex justify-content-center d-xl-block">
                 <img
                     src={user.urlProfile}
                     alt=""
-                    width="160"
+                    
                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                 />
         </div>

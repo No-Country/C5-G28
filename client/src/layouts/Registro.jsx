@@ -69,6 +69,7 @@ function Registro() {
                             <div className="form-group mb-3">
                                 {/* input con clase form-control  */}
                                <input className="form-control" {...getFieldProps('username')} type="text" placeholder="Ingresa tu nombre"/>
+                               {touched.username && errors.username && <span>{errors.username}</span>} 
                             </div>
 {/* 
                             <div className="form-group mb-3">
@@ -78,7 +79,8 @@ function Registro() {
  */}
                             <div className="form-group mb-3">
                                {/* input clase form-control tipo email */}
-                               <input className="form-control" {...getFieldProps('date')} type="date" placeholder="Ingresa tu fecha de nacimento"/>                              
+                               <input className="form-control" {...getFieldProps('date')} type="date" placeholder="Ingresa tu fecha de nacimento"/> 
+                                                            
                             </div>
 
                             <div className="form-group mb-3">
@@ -90,12 +92,13 @@ function Registro() {
                             <div className="form-group mb-3">
  
                                <input className="form-control" {...getFieldProps('urlProfile')} type="text" placeholder="url foto de perfil *op"/>
+                               {touched.urlProfile && errors.urlProfile && <span>{errors.urlProfile}</span>} 
                             </div>
                            
 
                             <div className="form-group mb-3">
                                {/* input clase form-control tipo password */}
-                               <input className="form-control" {...getFieldProps('password')} type="password" placeholder="Ingresa una contraseña"/>                              
+                               <input className="form-control" {...getFieldProps('password')} type="password" placeholder="Ingresa una contraseña"/>                             
                             </div>
     
                             <div className="form-group mb-3">

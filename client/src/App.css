@@ -38,8 +38,21 @@
 }
 
 .bg-follow_card {
-  border-radius: 10px;
+  border-radius: 0px;
   background-color: #fff!important;
 }
 /* Login section css */
 
+body::-webkit-scrollbar {
+  width: 16px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: orange;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #FF801F;    /* color of the scroll thumb */
+  border-radius: 40px;       /* roundness of the scroll thumb */
+  border: 3px solid #FF8C32;  /* creates padding around scroll thumb */
+}

@@ -21,6 +21,9 @@ const userSchema = new Schema(
     urlProfile: {
       type: String,
     },
+    urlProfile: {
+      type: String,
+    },
     roles: [
       {
         ref: "RoleModel",
@@ -44,7 +47,7 @@ const userSchema = new Schema(
       type: [String],
     },
     preferences: {
-      type: [String],
+      type: [Object],
     },
     follows: {
       type: [String],

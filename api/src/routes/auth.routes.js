@@ -16,7 +16,7 @@ router.post("/signin", signIn);
 router.get("/confirm-account/:confirmToken", confirmAccount);
 router.put("/forgot-password", forgotPassword);
 router.put("/new-password", createNewPassword);
-router.put("/edit/:id",edit);
+router.put("/edit",edit);
 router.put("/editprofile",editProfile);
 
 

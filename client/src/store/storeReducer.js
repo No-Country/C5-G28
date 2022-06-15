@@ -24,9 +24,14 @@ console.log(action)
             return{
                 ...state,...action.payload
             }
+        case types.authPreferences:
+          return {
+            ...state,...action.payload
+      };
         default:
             return state;
     }
 }
 
-export {initialStore,types}
+
+export { initialStore, types };

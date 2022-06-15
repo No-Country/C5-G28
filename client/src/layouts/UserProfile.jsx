@@ -16,15 +16,12 @@ import { types } from '../store/storeReducer';
 const UserProfile = () => {
     const MySwal = withReactContent(Swal)
     const { user,dispatch } = useContext(StoreContext);
-    let Navigate = useNavigate();
-
      const {handleSubmit,errors,touched,getFieldProps} = useFormik({
     initialValues:{
         token:user.user.token,
         username:user.user.userName,
         email:user.user.email,
         urlProfile:user.user.urlProfile,
-
     },
     onSubmit:values => {
         try{
@@ -55,7 +52,7 @@ const UserProfile = () => {
     const updateProfile = (id,token,userName,urlProfile,email) =>{
         return{
             type:types.updateProfile,
-            payload:
+            user:
             {
                 id:id,
                 token:token,

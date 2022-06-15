@@ -134,6 +134,12 @@ nav.main-menu li.active > a,
 .dashboard-page nav.dashboard-menu ul li.active a {
   color: rgb(0, 0, 0);
   background-color: #f56a00;
+  border-right:8px solid;
+}
+.active {
+  color: rgb(0, 0, 0);
+  background-color: #f56a00;
+  border-right:8px solid;
 }
 .area {
   float: left;

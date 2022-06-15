@@ -8,13 +8,16 @@ import { types } from "../../store/storeReducer";
 const Sidebar = () => {
   const {user,dispatch} = useContext(StoreContext);
   const location = useLocation();
-
+  const [active, setaActive] = useState('home');
+  const setNavActive = (activo) =>{
+    console.log(activo)
+  }
    if ( user.id === undefined || user.id === null || user === null || location.pathname === '/') {
     return;
   }
    console.log(user.urlProfile)
   return (
-    <nav className="main-menu" style={{ position: "fixed" }}>
+    <nav className="main-menu" style={{ position: "fixed",borderRight:'4px solid' }}>
       <ul>
         <div className="grid">
           <div>
@@ -32,17 +35,17 @@ const Sidebar = () => {
           </div>
           <div>
             <li>
-              <Link to="/home">
+              <Link to="/home" className={setNavActive('home')}>
                 <i className="fa fa-home fa-2x"></i>
                 <span className="nav-text">Home</span>
               </Link>
             </li>
-            <li className="has-subnav">
-              <Link to={"/guardados"}>
+{/*             <li className="has-subnav">
+              <Link to={"/guardados"} className={()=>{ if(active === 'guardados'){return 'active'}}}>
                 <i className="fa fa-bookmark" aria-hidden="true"></i>
                 <span className="nav-text">Elementos guardados</span>
               </Link>
-            </li>
+            </li> */}
             <li className="has-subnav">
               <Link to="/posts">
                 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -52,29 +55,35 @@ const Sidebar = () => {
              <li className="has-subnav">
               <Link to="/perfil">
                 <i className="fa fa-gear" aria-hidden="true"></i>
-                <span className="nav-text">Usuarios</span>
+                <span className="nav-text">Configuracion</span>
               </Link>
             </li> 
-            <li>
+{/*             <li>
             <Link to="/notification">
                 <i className="fa fa-bell" aria-hidden="true"></i>
                 <span className="nav-text">Notificaciones</span>
                 </ Link >
+            </li> */}
+            <li>
+            <Link to="/notification" onClick={() => {dispatch({type:types.authLogOut})}}>
+                <i className="fa fa-sign-out" aria-hidden="true"></i>
+                <span className="nav-text">Log out</span>
+                </ Link >
             </li>
           </div>
 
-          <div className="logout"  onClick={() => {dispatch({type:types.authLogOut})}} >
+{/*           <div className="logout"  onClick={() => {dispatch({type:types.authLogOut})}} >
             <li>
               <a href="/">
-                {/* <i className="fa"> */}
+
                 <img src={user.urlProfile} alt="" style={{ marginTop: "22px"}} className="logo2" />
-                {/* </i> */}
+
                 <span className="nav-text" style={{ padding: "10px",width:'250px',height:'91px' }}>
                   Log-out
                 </span>
               </a>
             </li>
-          </div>
+          </div> */}
         </div>
       </ul>
     </nav>

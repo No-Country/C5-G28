@@ -5,7 +5,7 @@
 }
 
 const initialStore = {
-    id:null,token:null,username:null,urlProfile:null,email:null
+    id:null,token:null,username:null,urlProfile:null,email:null,bornDate:null
 }
 
 export const storeReducer = (state,action) =>{
@@ -13,16 +13,16 @@ console.log(action)
     switch(action.type){
         case types.authLogOut:
             return{
-                user:initialStore
+                ...state
             };
             
         case types.authLogIn:
             return{
-                user:action.payload
+                ...action.payload
             }
         case types.updateProfile:
             return{
-                user:action.payload
+                ...state,...action.payload
             }
         default:
             return state;

@@ -12,7 +12,7 @@ const Sidebar = () => {
    if (user.length === 0) {
     return;
   }
-   if (user.user.id === null){
+   if (user.id === null){
      return;
    }
   return (

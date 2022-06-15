@@ -1,8 +1,7 @@
 
-import "../styles/UserProfile.module.css";
+import "../styles/userProfile.css";
 
 import React,{useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -18,23 +17,35 @@ const UserProfile = () => {
     const { user,dispatch } = useContext(StoreContext);
      const {handleSubmit,errors,touched,getFieldProps} = useFormik({
     initialValues:{
-        token:user.user.token,
-        username:user.user.userName,
-        email:user.user.email,
-        urlProfile:user.user.urlProfile,
+        id:user.id,
+        token:user.token,
+        username:user.userName,
+        email:user.email,
+        urlProfile:user.urlProfile,
+        bornDate:user.bornDate
     },
     onSubmit:values => {
         try{
             axios.put(
                 'http://localhost:3001/api/auth/editprofile',
-                {token:values.token,username:values.username,email:values.email,urlProfile:values.urlProfile}
+                {   
+                    id:values.id,
+                    token:values.token,
+                    username:values.username,
+                    email:values.email,
+                    urlProfile:values.urlProfile,
+                    bornDate:values.bornDate
+                }
                 ).then(res => {
+
                     if(res.status === 200){
                         dispatch(updateProfile(
+                            values.id,
                             values.token,
                             values.username,
                             values.urlProfile,
-                            values.email));
+                            values.email,
+                            values.bornDate));
                         MySwal.fire({title:<h2> Cambios realizados </h2>}).then(()=>{})
                     }
                 }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
@@ -49,23 +60,71 @@ const UserProfile = () => {
     })
 })
         
-    const updateProfile = (id,token,userName,urlProfile,email) =>{
+    const updateProfile = (id,token,userName,urlProfile,email,bornDate) =>{
+
         return{
             type:types.updateProfile,
-            user:
+            payload:
             {
                 id:id,
                 token:token,
                 userName:userName,
                 urlProfile:urlProfile,
-                email:email
+                email:email,
+                bornDate:bornDate
             }
         }
     }
 
     return (
         <>
-            <div className='container  '>
+                <div className="mt-5 w-75 m-auto form-container">
+            <header>
+                <img src={user.urlProfile} alt="Imagen de usuario" className="img-responsive userImg" />
+                <hr />
+            </header>
+            
+            <form onSubmit={handleSubmit}>
+            <div className="form-group row">
+                <label htmlFor="nombre" className="col-sm-2 col-form-label">Nombre de usuario</label>
+                <div className="col-sm-10">
+                    <input type="text" {...getFieldProps('username')} /* readonly */ className="form-control" /* value="Menganito" */ />
+                </div>
+                 {/* Para Manejo de Errores en el Formulario  */}
+    
+            </div>
+             <div className="form-group row">
+                <label htmlFor="apellido" className="col-sm-2 col-form-label">url foto de perfil</label>
+                <div className="col-sm-10">
+                    <input type="text" {...getFieldProps('urlProfile')} /* readonly */ className="form-control" /* value="Fulano"  *//>
+                </div>
+            </div> 
+            <div className="form-group row">
+                <label htmlFor="fechaNacimiento" className="col-sm-2 col-form-label">Fecha Nacimiento</label>
+                <div className="col-sm-10">
+                    <input type="date" /* readonly */ {...getFieldProps('bornDate')} className="form-control"    /* disabled */ />
+                </div>
+            </div>
+            <div className="form-group row">
+                <label htmlFor="correo" className="col-sm-2 col-form-label">Correo Electronico</label>
+                <div className="col-sm-10">
+                    <input type="text" /* readonly */ {...getFieldProps('email')} className="form-control" /* value="meganitofulano@mail.com" */ />
+                </div>
+            </div>
+{/*             <div className="form-group row">
+                <label htmlFor="contraseña" className="col-sm-2 col-form-label">Contraseña</label>
+                <div className="col-sm-10">
+                    <input type="text" readonly className="form-control" value="Contraseña" />
+                    <span className={isShow ? 'fa fa-icon fa-eye-slash password-icon' : 'fa fa-icon fa-eye password-icon' } onClick={showPassword}></span>
+                </div>
+            </div>     */}   
+            <div className="btn-container">
+                <button type="submit" class="btn btn-ConfigUser">Guardar Cambios</button>
+            </div>               
+            </form>
+            
+        </div>
+         {/*    <div className='container  '>
                 <h1> Configuracion de </h1>
                <hr />
                 <div className="form-group mb-5">
@@ -90,7 +149,7 @@ const UserProfile = () => {
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> */}
         </ >
     )
 }

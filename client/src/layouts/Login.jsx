@@ -32,11 +32,19 @@ function Login() {
                 console.log(values)
                 axios.post(
                     'http://localhost:3001/api/auth/signin',
-                    {email:values.email,password:values.password}
+                    {
+                        email:values.email,
+                        password:values.password}
                     ).then(res => {
-                        let {id,token,userName,urlProfile,email} = res.data;
-                        console.log(res.data)
-                        dispatch(loginState(id,token,userName,urlProfile,email));
+                        let {id,token,userName,urlProfile,email,bornDate} = res.data;
+                        console.log('valueeee'+res.data)
+                        dispatch(loginState(
+                            id,
+                            token,
+                            userName,
+                            urlProfile,
+                            email,
+                            bornDate));
                         //MySwal.fire({title:<h2> Logueado </h2>}).then(()=>{})
                         Navigate('/home')
                     }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
@@ -52,10 +60,17 @@ function Login() {
             
         
 
-        const loginState = (id,token,userName,urlProfile,email) =>{
+        const loginState = (id,token,userName,urlProfile,email,bornDate) =>{
             return{
                 type:types.authLogIn,
-                payload:{id:id,token:token,userName:userName,urlProfile:urlProfile,email:email}
+                payload:{
+                    id:id,
+                    token:token,
+                    userName:userName,
+                    urlProfile:urlProfile,
+                    email:email,
+                    bornDate:bornDate
+                }
             }
         }
 

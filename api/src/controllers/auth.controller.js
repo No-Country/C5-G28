@@ -11,7 +11,7 @@ export const signUp = async (req, res) => {
 
   try {
     const { username, email, password, roles, bornDate,urlProfile } = req.body;
-    console.log(bornDate)
+    
     const userExists = await UserModel.findOne({ email });
 
     if (userExists)
@@ -88,7 +88,7 @@ export const signUp = async (req, res) => {
 export const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    console.log(req.body)
     const userExists = await UserModel.findOne({ email }).populate("roles");
 
     if (!userExists) return res.status(404).json({ message: "User not found" });
@@ -112,8 +112,11 @@ export const signIn = async (req, res) => {
     let urlProfile=userExists.urlProfile;
     let userName = userExists.username;
     let id = userExists.id;
-    return res.status(200).json({ token,urlProfile,userName,id,email , message: "SignIn succesfully" });
+    let bornDate = userExists.bornDate;
+  
+    return res.status(200).json({ token,userName,id,urlProfile,email,bornDate, message: "SignIn succesfully" });
   } catch (error) {
+    console.log(error)
     return res.status(400).json({ message: "Somethin went wrong, try again" });
   }
 };
@@ -313,7 +316,7 @@ export const editProfile = async(req,res) =>{
                   
                   return res.status(200).json({
                        status: 'succed', 
-                       post:postUpdated 
+                       user:postUpdated 
                       });
               }
           )

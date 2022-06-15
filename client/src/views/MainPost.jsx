@@ -17,7 +17,7 @@ const MainPost = (props) => {
   const { user, dispatch } = useContext(StoreContext);
   const URL = "http://localhost:3001/api/post";
 
-  console.log(user);
+  // console.log(user);
 
   const getPosts = (path) => {
     console.log(path);
@@ -47,29 +47,21 @@ const MainPost = (props) => {
   }, [path]);
 
   const prueba = () => {
+    console.log("soy una prueba");
     try {
       axios
-        .put(
-          "localhost:3001/api/auth/edit",
-          {
-            _id: "62a09cab39698a3e860f33b7",
-            username: "juniorcoderbook",
-            email: "juniorcoderbook@gmail.com",
-            preferences: [
-              { categories: "JavaScript" },
-              { categories: "React" },
-              { categories: "Blockchain" },
-            ],
-          },
-          {
-            headers: { "Content-type": "application/json; charset=UTF-8" },
-          }
-        )
+        .put("http://localhost:3001/api/auth/edit", {
+          _id: "62a09cab39698a3e860f33b7",
+          username: "juniorcoderbook",
+          email: "juniorcoderbook@gmail.com",
+          preferences: [{ categories: "JavaScript" }, { categories: "React" }],
+        })
         .then((res) => {
-          let { id, token, userName, urlProfile, preferences } = res.user;
+          let { _id, token, userName, urlProfile, preferences } = res.data.post;
           dispatch(
-            preferencesState(id, token, userName, urlProfile, [...preferences])
+            preferencesState(_id, token, userName, urlProfile, [...preferences])
           );
+          console.log(preferences);
         });
     } catch (error) {
       console.log(error);

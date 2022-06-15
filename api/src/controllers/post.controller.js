@@ -1,4 +1,5 @@
 import PostModel from "../models/PostModel";
+import UserModel from "../models/UserModel";
 // import validator from 'validator';
 
 export const create = async (req, res) => {
@@ -229,28 +230,8 @@ export const getAll = (req, res) => {
 };
 
 export const getByPreferences = async (req, res) => {
-  const preferences = [{ categories: "JavaScript" }, { categories: "React" }];
-
-  // const preferences =  UserModel.find({ _id: "62a09cab39698a3e860f33b7" })
-  //   .select("preferences")
-  //   .exec((error, user) => {
-  //     if (error) {
-  //       return res.status(500).send({
-  //         status: "error",
-  //         message: "error",
-  //       });
-  //     }
-  //     if (!user) {
-  //       return res.status(500).send({
-  //         status: "result",
-  //         message: "No results",
-  //       });
-  //     }
-
-  //     return res.status(200).send({
-  //       preferences,
-  //     });
-  //   });
+  // const preferences = [{ categories: "JavaScript" }, { categories: "React" }];
+  const { preferences } = req.body;
 
   PostModel.find({
     $or: preferences,

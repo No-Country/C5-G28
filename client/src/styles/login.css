@@ -21,9 +21,13 @@
 .row{
     
     justify-content: center;
-    align-items: center;
+     align-items: center; 
 }
-
+.row-home{
+    
+    justify-content: center !important;
+     align-items: center!important; 
+}
 .mt-4{
     margin-top: 2rem !important;
 }
@@ -75,7 +79,10 @@ hr{
 }
 
 /* Pagina de Verficacion css */
-
+.swal2-styled.swal2-confirm.swalBtnColor {
+    color: white;
+    background-color:#EE5007;
+  }
 .verificacion-container {
     height: 100vh;
     padding-top: calc(20% - 14%);

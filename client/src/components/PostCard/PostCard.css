@@ -2,3 +2,8 @@
   background-color: #d1d3d4 !important;
   border-color: #d1d3d4 !important;
 }
+.content-post {
+  height: 140px;
+  overflow: hidden;
+  padding: 14px 0px;
+}

@@ -46,7 +46,10 @@ function Login() {
                             preferences));
                         //MySwal.fire({title:<h2> Logueado </h2>}).then(()=>{})
                         Navigate('/home')
-                    }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
+                    }).catch(error => MySwal.fire({
+                      customClass: {confirmButton: 'swalBtnColor'},
+                      title:<h2> Credenciales erroneas </h2>
+                    }))
             }catch(error){
                 console.log(error)
             } 

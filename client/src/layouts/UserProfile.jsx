@@ -81,8 +81,16 @@ const UserProfile = () => {
         <>
                 <div className="mt-5 w-75 m-auto form-container">
             <header>
-                <img src={user.urlProfile} alt="Imagen de usuario" className="img-responsive userImg" />
-                <hr />
+                 <div className="col-md-3 d-flex justify-content-center d-lg-none d-xl-block">
+                <img
+                    src={user.urlProfile}
+                    alt=""
+                    width="160"
+                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+                />
+        </div>
+               {/*  <img src={user.urlProfile} alt="Imagen de usuario" className="img-responsive userImg" />
+                <hr /> */}
             </header>
             
             <form onSubmit={handleSubmit}>
@@ -112,6 +120,9 @@ const UserProfile = () => {
                     <input type="text" /* readonly */ {...getFieldProps('email')} className="form-control" /* value="meganitofulano@mail.com" */ />
                 </div>
             </div>
+            {touched.email && errors.email && (
+                    <span> {errors.email} </span>
+                  )}
 {/*             <div className="form-group row">
                 <label htmlFor="contraseña" className="col-sm-2 col-form-label">Contraseña</label>
                 <div className="col-sm-10">

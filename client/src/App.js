@@ -1,15 +1,15 @@
 import "./App.css";
 import StoreProvider from "./store/storeProvider";
 import { AppRouter } from "./routes/AppRouter";
-
-
+import { PreferencesContextProvider } from "./store/PreferencesContext.js";
 
 function App() {
-
   return (
     <div className="App">
       <StoreProvider>
-        <AppRouter/>
+        <PreferencesContextProvider>
+          <AppRouter />
+        </PreferencesContextProvider>
       </StoreProvider>
     </div>
   );

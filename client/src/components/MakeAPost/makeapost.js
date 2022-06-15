@@ -33,7 +33,7 @@ const MakeAPost = () => {
     },  
     onSubmit:(values) => {
         try{
-            values.username = user.user.userName;
+            values.username = user.userName;
             
             axios.post(
                 'http://localhost:3001/api/post/save/',
@@ -45,8 +45,8 @@ const MakeAPost = () => {
                     urlPhoto:values.urlPhoto
                 }).then(res => {
                     console.log(res)
-                    MySwal.fire({title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})
-                }).catch(error => MySwal.fire({title:<h2> fallo post </h2>}))
+                    MySwal.fire({customClass: {confirmButton: 'swalBtnColor'},title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})
+                }).catch(error => MySwal.fire({title:<h2 > fallo post </h2>}))
         }catch(error){
             console.log(error)
         } 
@@ -77,7 +77,7 @@ const MakeAPost = () => {
                 <label className="d-flex">
                     <input type="text" name="title" {...getFieldProps('title')} placeholder='Escribe un título aquí...' className='my-input-form my-title-input '/>
                 </label>
-
+                {errors.title ? <div className='error'>{errors.title}</div> : null}
                 {/* ETIQUETAS */}
                 <CustomSelect
                     
@@ -90,7 +90,7 @@ const MakeAPost = () => {
 
                 {/* TEXTAREA */}
                 <textarea name="textarea" {...getFieldProps('content')} rows="12" className='my-input-form my-text-area' placeholder='Escribe el contenido del artículo aquí...'></textarea>
-
+                {errors.content ? <div className='error'>{errors.content}</div> : null}
 
                 {/* CARGAR ENLACES */}
                 <label className="d-flex">

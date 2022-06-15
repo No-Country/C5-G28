@@ -20,7 +20,10 @@
    width: 80%;   
      
 }
-
+.swal2-styled.swal2-confirm.swalBtnColor {
+    color: white;
+    background-color:#EE5007;
+  }
 
 .my-position-button{
     display: flex;

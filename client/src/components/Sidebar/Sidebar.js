@@ -24,7 +24,7 @@ const Sidebar = () => {
             <li>
               <Link to="/home">
                 {/* <i className="fa"> */}
-                <img src="../LogoF.png" alt="" style={{ marginTop:'20px' }} className="logo" />
+                <img src="../LogoF.png" alt="" className="logo" />
                 {/* </i> */}
                 <span className="nav-text" style={{ height:'91px' }}>
                   JuniorCoderBook
@@ -36,7 +36,7 @@ const Sidebar = () => {
           <div>
             <li>
               <Link to="/home" className={setNavActive('home')}>
-                <i className="fa fa-home fa-2x"></i>
+                <i className="fa fa-home" style={{ fontSize:'40px !important' }}></i>
                 <span className="nav-text">Home</span>
               </Link>
             </li>
@@ -48,13 +48,13 @@ const Sidebar = () => {
             </li> */}
             <li className="has-subnav">
               <Link to="/posts">
-                <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <i className="fa fa-pencil-square-o padding-left" style={{paddingLeft:'55px !important'}} aria-hidden="true"></i>
                 <span className="nav-text">Post</span>
               </Link>
             </li>
              <li className="has-subnav">
               <Link to="/perfil">
-                <i className="fa fa-gear" aria-hidden="true"></i>
+                <i className="fa fa-gear"  aria-hidden="true"></i>
                 <span className="nav-text">Configuracion</span>
               </Link>
             </li> 
@@ -66,7 +66,7 @@ const Sidebar = () => {
             </li> */}
             <li>
             <Link to="/notification" onClick={() => {dispatch({type:types.authLogOut})}}>
-                <i className="fa fa-sign-out" aria-hidden="true"></i>
+                <i className="fa fa-sign-out padding-left" aria-hidden="true"></i>
                 <span className="nav-text">Log out</span>
                 </ Link >
             </li>

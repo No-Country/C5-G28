@@ -11,7 +11,7 @@ export const PostCard = ({ post }) => {
         <div className="col-md-9 p-4 shadow-4 rounded-3 text-left">
           <div>
             <h2>{title}</h2>
-            <p>{content}</p>
+            <p className="content-post">{content}</p>
           </div>
 
           <div className=" d-flex align-items-center justify-content-between">

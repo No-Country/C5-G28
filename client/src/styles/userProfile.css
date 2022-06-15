@@ -9,11 +9,12 @@ header {
 
 .userImg {
     margin-top: 5%;
+    max-width: 250px;
 }
 
 hr {
     position: absolute;
-    top: 12%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;

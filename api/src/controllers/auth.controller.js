@@ -109,7 +109,7 @@ export const signIn = async (req, res) => {
     let urlProfile=userExists.urlProfile;
     let userName = userExists.username;
     let id = userExists.id;
-    let bornDate = userExists.bornDate;
+    const bornDate = new Date(userExists.bornDate).toISOString().split('T')[0];
   
 
     return res.status(200).json({ token,userName,id,urlProfile,email,bornDate, message: "SignIn succesfully" });

@@ -19,7 +19,6 @@ import '../components/SocialButtons/social.css';
 function Login() {
         const MySwal = withReactContent(Swal)
         const {dispatch } = useContext(StoreContext);
-        
         let Navigate = useNavigate();
          const {handleSubmit,errors,touched,getFieldProps} = useFormik({
         initialValues:{
@@ -57,8 +56,6 @@ function Login() {
         })
     })
             
-        
-
         const loginState = (id,token,userName,urlProfile,email,bornDate) =>{
             return{
                 type:types.authLogIn,

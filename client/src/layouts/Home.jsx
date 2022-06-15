@@ -17,10 +17,10 @@ const Home = () => {
     <>
     <div className="wrapper"  >
       <div>
-        <div className="row col-md mx-0">
-          <div className="col-lg-0"></div>
-          <div className="col-lg-7 px-4 px-sm-5 mt-5">
-             <Usercard/> 
+        <div /* className="row col-md mx-0" */ className="home-container">
+          {/* <div className="col-lg-0"></div> */}
+          <div className="col-lg-8 px-4 px-sm-5 mt-5 col-sm-12 col-12 home-news-post">
+              <Usercard/>  
 
             {/* <div className="d-flex flex-row-reverse py-4 ">
               <SearchInput />
@@ -29,7 +29,7 @@ const Home = () => {
             <MainPost />
           </div>
 
-          <div className="col-lg-4 px-5 bg-light">
+          <div className="col-lg-4 col-sm-0 col-0 px-5 bg-light">
             <MostReaded />
             <hr className="d-none d-sm-block" />
             <FollowList />

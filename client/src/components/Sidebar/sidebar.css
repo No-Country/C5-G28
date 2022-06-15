@@ -18,7 +18,7 @@ code {
 .fa {
   position: relative;
   display: table-cell;
-  width: 60px;
+  width: 56px;
   height: 85px;
   text-align: center;
   vertical-align: middle;
@@ -40,7 +40,7 @@ nav.main-menu.expanded {
   bottom: 0;
   height: 100%;
   left: 0;
-  width: 80px;
+  width: 70px;
   overflow: hidden;
   -webkit-transition: width 0.05s linear;
   transition: width 0.05s linear;
@@ -107,12 +107,13 @@ nav.main-menu.expanded {
   overflow-y: auto;
   overflow: visible;
 }
+
 div li a i{
   font-size: 40px !important;
-  padding-left: 15px !important;
+  padding-left: 8px !important;
 
 }
-.padding-left{padding-left: 21px !important;}
+.padding-left{padding-left: 14px !important;}
 a:hover,
 a:focus {
   text-decoration: none;
@@ -167,8 +168,9 @@ nav.main-menu li.active > a,
 }
 
 .logo {
-  width: 75px;
- margin-top:10px;
+  width: 60px;
+ margin-top:20px;
+ margin-left:4px;
 }
 
 .logo2 {
@@ -187,6 +189,9 @@ nav.main-menu li.active > a,
 }
 
 @media only screen and (max-width: 600px) {
+  .col-lg-7{
+    max-width:0px !important;
+  }
   .wrapper {
     margin-left: calc(100% - 90%);
   }

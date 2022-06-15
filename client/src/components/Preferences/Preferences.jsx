@@ -13,8 +13,8 @@ const Preferences = () => {
   ];
 
   return (
-    <div className="row d-flex justify-content-center ">
-      <h3 className="mb-2 px-2 font-weight-light">Tus preferidos</h3>
+    <div className="row d-flex justify-content-center mt-4">
+      {/* <h3 className="mb-2 px-2 font-weight-light">Tus preferidos</h3> */}
       <ul className="px-0 d-flex align-content-center align-items-center flex-wrap tag-preferences">
         {/* ITERAR SEGÚN PREFERENCIAS */}
         {preferences.length >= 1 ? (

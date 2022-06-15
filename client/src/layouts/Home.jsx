@@ -1,13 +1,14 @@
 import React from "react";
 
 import MainPost from "../views/MainPost";
-import SearchInput from "../components/SearchInput/SearchInput";
+// import SearchInput from "../components/SearchInput/SearchInput";
 
-import ThemeSwitch from "../components/ThemeSwitch/ThemeSwitch";
+// import ThemeSwitch from "../components/ThemeSwitch/ThemeSwitch";
 import MostReaded from "../views/MostReaded";
+import Usercard from "../components/UserCard/Usercard";
 
 import FollowList from "../views/FollowList";
-import Preferences from "../components/Preferences/Preferences";
+// import Preferences from "../components/Preferences/Preferences";
 import Footer from "../components/Footer/Footer";
 
 const Home = () => {
@@ -17,12 +18,12 @@ const Home = () => {
         <div className="row col-md mx-0">
           <div className="col-lg-1"></div>
           <div className="col-lg-7 px-4 px-sm-5 mt-5">
-            {/* <UserCard/> */}
+            <Usercard />
 
-            <div className="d-flex flex-row-reverse py-4 ">
+            {/* <div className="d-flex flex-row-reverse py-4 ">
               <SearchInput />
-            </div>
-            <Preferences />
+            </div> */}
+            {/* <Preferences /> */}
             <MainPost />
           </div>
 

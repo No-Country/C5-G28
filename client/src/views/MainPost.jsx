@@ -1,7 +1,5 @@
 import React from "react";
 import { useEffect, useState, useContext } from "react";
-import { StoreContext } from "../store/storeProvider";
-import { types } from "../store/storeReducer";
 import { PreferencesContext } from "../store/PreferencesContext";
 
 import axios from "axios";

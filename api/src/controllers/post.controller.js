@@ -3,7 +3,7 @@ import UserModel from "../models/UserModel";
 // import validator from 'validator';
 
 export const create = async (req, res) => {
-  let { username, title, content, urlPhoto, categories } = req.body;
+  let { username, title, content, urlPhoto, categories,urlProfile } = req.body;
   try {
     if (!username || !title || !content) {
       return res.status(400).json({
@@ -18,6 +18,7 @@ export const create = async (req, res) => {
       content,
       urlPhoto,
       categories,
+      urlProfile
     });
     newPost.save();
     return res.status(200).json({ status: "succed", message: "ok" });
@@ -53,6 +54,7 @@ export const remove = async (req, res) => {
     console.log(error);
   }
 };
+
 export const search = (req, res) => {
   let searchString = req.params.search;
 
@@ -228,7 +230,30 @@ export const getAll = (req, res) => {
       });
     });
 };
+export const getById = (req, res) => {
+  console.log(req.params)
+  let {id} = req.params; 
 
+  PostModel.find({_id:id })
+    .sort({ date: -1 })
+    .exec((error, post) => {
+      if (error) {
+        return res.status(500).send({
+          status: "error",
+          message: "error",
+        });
+      }
+      if (!post || post.length <= 0) {
+        return res.status(500).send({
+          status: "result",
+          message: "No results",
+        });
+      }
+      return res.status(200).send({
+        post,
+      });
+    });
+};
 // export const getByPreferences = async (req, res) => {
 //   const preferences = [{ categories: "JavaScript" }, { categories: "React" }];
 //   PostModel.find({

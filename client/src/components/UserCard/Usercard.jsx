@@ -3,7 +3,7 @@ import Preferences from "../Preferences/Preferences";
 
 const Usercard = () => {
   return (
-    <div className="col bg-light border py-4 animate__animated animate__fadeInDown animate__slow" style={{borderRadius:'10px'}}>
+    <div className="col bg-grey border py-4 animate__animated animate__fadeInDown animate__slow" style={{borderRadius:'10px'}}>
       <div className="row col-md-12 d-flex align-items-center">
         <div className="col-md-9 col-lg-12 col-xl-9">
           <div className="my-4 text-center text-md-left">

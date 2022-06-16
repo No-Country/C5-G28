@@ -43,15 +43,15 @@ const MostReaded = () => {
             <g></g>
           </svg>
         </div>
-        <h6 className="font-weight-normal">Lo más leído de esta semana</h6>
+        <h6 className="font-weight-normal text-white">Lo más leído de esta semana</h6>
       </div>
       <SidePostCard />
       <SidePostCard />
       <SidePostCard />
       <SidePostCard />
-      <h6 className="font-weight-normal text-left">
+{/*       <h6 className="font-weight-normal text-left">
         Mirá todos los más leídos de la semana
-      </h6>
+      </h6> */}
     </div>
   );
 };

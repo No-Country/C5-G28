@@ -24,14 +24,16 @@ const Home = () => {
 
             {/* <div className="d-flex flex-row-reverse py-4 ">
               <SearchInput />
-            </div> */}
+            </div>
+             <hr className="d-none d-sm-block" />
+            */}
             {/* <Preferences /> */}
             <MainPost />
           </div>
 
           <div className="col-lg-4 col-sm-0 col-0 px-5 bg-light animate__animated animate__fadeInRight animate__slow" style={{borderRadius:'15px'}}>
             <MostReaded />
-            <hr className="d-none d-sm-block" />
+           
             <FollowList />
             <Footer />
           </div>

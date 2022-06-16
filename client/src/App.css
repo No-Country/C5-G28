@@ -58,3 +58,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* #FF8C32 #FF801F*/
+
+.bg-grey {
+  background-color: #f7f7f7 !important;
+}
+.text-white {
+  color: #f7f7f7 !important;
+}
+.margin-right{
+  margin-right:10px !important ;
+}

@@ -23,18 +23,20 @@ const MakeAPost = () => {
     const { user } = useContext(StoreContext);   
     let Navigate = useNavigate();
 
-    const {handleSubmit, errors,touched, getFieldProps,setFieldValue,values} = useFormik({
+    const {handleSubmit, errors,/* touched, */ getFieldProps,setFieldValue,values} = useFormik({
     initialValues:{
         username:'',
         title:'',
         categories:'', 
         content:'',
-        urlPhoto:''
+        urlPhoto:'',
+        urlProfile:''
+
     },  
     onSubmit:(values) => {
         try{
             values.username = user.userName;
-            
+            values.urlProfile = user.urlProfile;
             axios.post(
                 'http://localhost:3001/api/post/save/',
                 {   
@@ -42,11 +44,12 @@ const MakeAPost = () => {
                     title:values.title,
                     categories:values.categories,
                     content:values.content,
-                    urlPhoto:values.urlPhoto
+                    urlPhoto:values.urlPhoto,
+                    urlProfile:values.urlProfile
                 }).then(res => {
                     console.log(res)
-                    MySwal.fire({title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})
-                }).catch(error => MySwal.fire({title:<h2> fallo post </h2>}))
+                    if(res.status === 200){ MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})}
+                }).catch(error => MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title:<h2> fallo post </h2>}))
         }catch(error){
             console.log(error)
         } 
@@ -109,12 +112,3 @@ const MakeAPost = () => {
 
 export default MakeAPost;
 
-{/*                 <select values={categories}  name="categories" label="categories" defaultValue="" size={1} className="d-flex form-control-lg my-title-input">
-                    <option value="">Selecciona una categoría para tu post</option>
-                    <option value="js">JavaScript</option>
-                    <option value="react">React</option>
-                    <option value="web-development">Desarrollo Web</option>
-                    <option value="ux-ui">UX/UI</option>
-                    <option value="crypto">Desarrollo Blockchain</option>
-                </select>
- */}

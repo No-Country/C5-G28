@@ -2,16 +2,13 @@ import React,{useContext,useState} from "react";
 import "./sidebar.css";
 
 //importando Link desde react route para poder navegar entre las secciones
-import { Link, useLocation,NavLink } from "react-router-dom";
+import { useLocation,NavLink } from "react-router-dom";
 import { StoreContext } from "../../store/storeProvider";
 import { types } from "../../store/storeReducer";
 const Sidebar = () => {
   const {user,dispatch} = useContext(StoreContext);
   const location = useLocation();
-  const [active, setaActive] = useState('home');
-  const setNavActive = (activo) =>{
-    console.log(activo)
-  }
+
    if ( 
      user.id === undefined || 
      user.id === null || 
@@ -22,7 +19,6 @@ const Sidebar = () => {
      location.pathname === '/recuperarpassword') {
     return;
   }
-   console.log(user.urlProfile)
   return ( 
     <nav className="main-menu animate__animated animate__fadeInLeft animate__slow" style={{ position: "fixed",borderRadius:'0 10px 10px 0' }}>
       <ul>
@@ -42,7 +38,7 @@ const Sidebar = () => {
           </div>
           <div>
             <li>
-              <NavLink to="/home" className={setNavActive('home')}>
+              <NavLink to="/home">
                 <i className="fa fa-home" style={{ fontSize:'40px !important' }}></i>
                 <span className="nav-text">Home</span>
               </NavLink>

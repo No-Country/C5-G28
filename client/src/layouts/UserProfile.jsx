@@ -15,8 +15,7 @@ import { types } from '../store/storeReducer';
 const UserProfile = () => {
     const MySwal = withReactContent(Swal)
     const { user,dispatch } = useContext(StoreContext);
-    console.log(user)
-     const {handleSubmit,errors,touched,getFieldProps} = useFormik({
+    const {handleSubmit,errors,touched,getFieldProps} = useFormik({
     initialValues:{
         id:user.id,
         token:user.token,
@@ -47,7 +46,7 @@ const UserProfile = () => {
                             values.urlProfile,
                             values.email,
                             values.bornDate));
-                        MySwal.fire({title:<h2> Cambios realizados </h2>}).then(()=>{})
+                        MySwal.fire({customClass: {confirmButton: 'swalBtnColor'},title:<h2> Cambios realizados </h2>}).then(()=>{})
                     }
                 }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
         }catch(error){
@@ -123,45 +122,12 @@ const UserProfile = () => {
             {touched.email && errors.email && (
                     <span> {errors.email} </span>
                   )}
-{/*             <div className="form-group row">
-                <label htmlFor="contraseña" className="col-sm-2 col-form-label">Contraseña</label>
-                <div className="col-sm-10">
-                    <input type="text" readonly className="form-control" value="Contraseña" />
-                    <span className={isShow ? 'fa fa-icon fa-eye-slash password-icon' : 'fa fa-icon fa-eye password-icon' } onClick={showPassword}></span>
-                </div>
-            </div>     */}   
             <div className="btn-container">
-                <button type="submit" class="btn btn-ConfigUser">Guardar Cambios</button>
+                <button type="submit" className="btn btn-ConfigUser">Guardar Cambios</button>
             </div>               
             </form>
             
         </div>
-         {/*    <div className='container  '>
-                <h1> Configuracion de </h1>
-               <hr />
-                <div className="form-group mb-5">
-                    <img src={user.user.urlProfile} alt="" style={{ marginTop: "42px" }} className="logo2" />
-                </div> 
-                <form className="container" onSubmit={handleSubmit}>
-                    <div >
-                        <div className="form-group  mb-4 row">
-                            <label for="inputPassword" class="col-sm-4 col-form-label">Usuario</label>
-                            <input className="form-control col-sm-5" {...getFieldProps('username')} type="text" required />
-                        </div>
-                        <div className="form-group mb-4 row">
-                            <label for="inputPassword" class="col-sm-4 col-form-label">Url de foto de perfil</label>
-                            <input className="form-control col-sm-5" {...getFieldProps('urlProfile')} type="text" required />
-                        </div>
-                        <div className="form-group mb-4 row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label"> correo electronico</label>
-                            <input className="form-control col-sm-5" {...getFieldProps('email')} type="email" required />
-                        </div>
-                        <div className="form-group mb-5">
-                            <button type="submit" className=" btn btn-danger">  Guardar cambios </button>
-                        </div>
-                    </div>
-                </form>
-            </div> */}
         </ >
     )
 }

@@ -23,7 +23,6 @@ const SidePostCard = () => {
           <p>Desarrollador Front-end</p>
         </div>
       </div>
-      <hr className="d-sm-block d-md-none" />
     </div>
   );
 };

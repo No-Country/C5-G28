@@ -5,6 +5,10 @@ const PostSchema = new Schema({
     type: String,
     unique: false,
   },
+  urlProfile: {
+    type: String,
+    unique: false,
+  },
   title: {
     type: String,
     unique: false,

@@ -8,6 +8,7 @@ import {
   dislike,
   getByCategories,
   getAll,
+  getById
   // getByPreferences,
 } from "../controllers/post.controller";
 const router = Router();
@@ -22,5 +23,6 @@ router.put("/like/:id", like);
 router.put("/dislike/:id", dislike);
 router.get("/categories/:category", getByCategories);
 router.get("/", getAll);
+router.get("/article/:id", getById);
 // router.get("/preferences/:category", getByPreferences);
 export default router;

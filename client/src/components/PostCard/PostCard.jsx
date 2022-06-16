@@ -8,7 +8,7 @@ export const PostCard = ({ post }) => {
     post;
   return (
     <Link
-      to={`post/${_id}`}
+      to={`/post/${_id}`}
       className="color animate__animated animate__fadeInUpBig animate__slow"
     >
       <div className="row  mt-5 d-flex align-items-center mx-0">

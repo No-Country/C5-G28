@@ -1,12 +1,13 @@
 import React from "react";
-import { useParams, useEffect, useState } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Perfil } from "../PerfilPost/Perfil";
 import axios from "axios";
 
-const PerfilContainer = () => {
-  const { _id } = useParams();
+export const PerfilContainer = () => {
+  const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [post, setPost] = useState(true);
+  const [post, setPost] = useState("");
   const URL = "http://localhost:3001/api/post/article/";
 
   const getPosts = (id) => {
@@ -20,7 +21,7 @@ const PerfilContainer = () => {
         return data.post;
       })
       .then((response) => {
-        setPost(response);
+        setPost(response[0]);
       })
       .catch((error) => {
         console.error(error);
@@ -29,8 +30,9 @@ const PerfilContainer = () => {
 
   useEffect(() => {
     setIsLoaded(false);
-    getPosts(_id);
+    getPosts(id);
     setTimeout(() => {
+      console.log(post);
       setIsLoaded(true);
     }, 2000);
   }, []);
@@ -39,5 +41,3 @@ const PerfilContainer = () => {
     <div>{isLoaded ? <Perfil post={post} /> : <div>CARGANDO...</div>}</div>
   );
 };
-
-export default PerfilContainer;

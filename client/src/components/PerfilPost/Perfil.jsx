@@ -3,14 +3,9 @@ import imagen from "../../assets/img/Profile 2.png";
 import "./Perfil.css";
 import imagen2 from "../../assets/img/Rectangle 97.png";
 
-export const Perfil = ({
-  username,
-  urlPhoto,
-  title,
-  categories,
-  content,
-  urlProfile,
-}) => {
+export const Perfil = (post) => {
+  const { username, urlPhoto, title, categories, content, urlProfile } = post;
+  console.log(username);
   return (
     <div className="container">
       <div className="row mt-5">

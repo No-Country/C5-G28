@@ -76,8 +76,8 @@ function Login() {
         }
 
   return (
-    <section className="form-section my-containter">
-      <div className="container" style={{ display: "grid" }}>
+    <section className="form-section my-containter animate__animated animate__fadeIn">
+      <div className="container animate__animated animate__fadeIn" style={{ display: "grid" }}>
         <div className="row justify-content-center">
           <div className="col-md-12 col-lg-10 bg-color mt-4 ">
             <div className="wrap d-md-flex">

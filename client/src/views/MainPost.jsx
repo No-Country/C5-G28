@@ -85,7 +85,7 @@ const MainPost = (props) => {
 
   return (
     <>
-      <div className="mt-5 pb-5">
+      <div className="mt-5 pb-5 animate__animated animate__fadeInUpBig animate__slow">
         <ul className="nav nav-tabs nav-post">
           {/* <li className="nav-item">
             <a className="nav-link " aria-current="page" href="#">

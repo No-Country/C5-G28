@@ -60,7 +60,7 @@ const MakeAPost = () => {
 
     return (
     
-    <section className='my-fkng-container'>
+    <section className='my-fkng-container animate__animated animate__fadeIn'>
 
         
         <form className='container' onSubmit={handleSubmit}>

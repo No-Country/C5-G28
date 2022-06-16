@@ -15,7 +15,7 @@ import '../styles/home.css';
 const Home = () => {
   return (
     <>
-    <div className="wrapper"  >
+    <div className="wrapper animate__animated animate__fadeIn"  >
       <div>
         <div /* className="row col-md mx-0" */ className="home-container">
           {/* <div className="col-lg-0"></div> */}
@@ -29,7 +29,7 @@ const Home = () => {
             <MainPost />
           </div>
 
-          <div className="col-lg-4 col-sm-0 col-0 px-5 bg-light">
+          <div className="col-lg-4 col-sm-0 col-0 px-5 bg-light animate__animated animate__fadeInRight animate__slow" style={{borderRadius:'15px'}}>
             <MostReaded />
             <hr className="d-none d-sm-block" />
             <FollowList />

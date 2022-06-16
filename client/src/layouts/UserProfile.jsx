@@ -79,7 +79,7 @@ const UserProfile = () => {
 
     return (
         <>
-                <div className="mt-5 w-75 m-auto form-container">
+                <div className="mt-5 w-75 m-auto form-container animate__animated animate__fadeIn">
             <header>
                  <div className="col-md-12 d-flex justify-content-center d-xl-block">
                 <img

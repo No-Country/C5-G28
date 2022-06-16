@@ -29,6 +29,7 @@ code {
 nav.main-menu.expanded {
   width: 250px;
   overflow: visible;
+  border-right:4px solid rgb(123, 123, 123);
 }
 
 .main-menu {
@@ -145,12 +146,12 @@ nav.main-menu li.active > a,
 .dashboard-page nav.dashboard-menu ul li.active a {
   color: rgb(0, 0, 0);
   background-color: #f56a00;
-  border-right:8px solid;
+  border-right:6px solid rgb(123, 123, 123);
 }
 .active {
   color: rgb(0, 0, 0);
   background-color: #f56a00;
-  border-right:8px solid;
+  border-right:6px solid rgb(123, 123, 123) ;
 }
 .area {
   float: left;

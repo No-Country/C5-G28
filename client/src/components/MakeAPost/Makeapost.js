@@ -45,14 +45,14 @@ const MakeAPost = () => {
                     urlPhoto:values.urlPhoto
                 }).then(res => {
                     console.log(res)
-                    MySwal.fire({title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})
-                }).catch(error => MySwal.fire({title:<h2> fallo post </h2>}))
+                    MySwal.fire({customClass: {confirmButton: 'swalBtnColor'},title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})
+                }).catch(error => MySwal.fire({title:<h2 > fallo post </h2>}))
         }catch(error){
             console.log(error)
         } 
     },
     validationSchema:Yup.object({
-        title:Yup.string().required('title requerido'),
+        title:Yup.string().min(5,'').required('title requerido'),
         content:Yup.string().required('content requerido'),
         urlPhoto:Yup.string().required('urlPhoto requerido')
     })
@@ -60,7 +60,7 @@ const MakeAPost = () => {
 
     return (
     
-    <section className='my-fkng-container'>
+    <section className='my-fkng-container animate__animated animate__fadeIn'>
 
         
         <form className='container' onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ const MakeAPost = () => {
                 <label className="d-flex">
                     <input type="text" name="title" {...getFieldProps('title')} placeholder='Escribe un título aquí...' className='my-input-form my-title-input '/>
                 </label>
-
+                {errors.title ? <div className='error'>{errors.title}</div> : null}
                 {/* ETIQUETAS */}
                 <CustomSelect
                     
@@ -90,7 +90,7 @@ const MakeAPost = () => {
 
                 {/* TEXTAREA */}
                 <textarea name="textarea" {...getFieldProps('content')} rows="12" className='my-input-form my-text-area' placeholder='Escribe el contenido del artículo aquí...'></textarea>
-
+                {errors.content ? <div className='error'>{errors.content}</div> : null}
 
                 {/* CARGAR ENLACES */}
                 <label className="d-flex">

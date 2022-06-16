@@ -4,9 +4,13 @@ import "./PostCard.css";
 import { Link } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
-  const { title, username, content, urlPhoto, likes, categories, date } = post;
+  const { title, username, content, urlPhoto, likes, categories, date, _id } =
+    post;
   return (
-    <Link to="/post" className="color animate__animated animate__fadeInUpBig animate__slow">
+    <Link
+      to={`post/${_id}`}
+      className="color animate__animated animate__fadeInUpBig animate__slow"
+    >
       <div className="row  mt-5 d-flex align-items-center mx-0">
         <div className="col-md-9 p-4 shadow-4 rounded-3 text-left">
           <div>

@@ -13,15 +13,12 @@ import "./css/MainPost.css";
 const MainPost = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [posts, setPosts] = useState(false);
-  const [path, setPath] = useState("");
   const { preference } = useContext(PreferencesContext);
-  // const { user, dispatch } = useContext(StoreContext);
+  const [path, setPath] = useState(`/categories/${preference}`);
+  const [active, setActive] = useState("Novedades");
   const URL = "http://localhost:3001/api/post";
 
-  // console.log(user);
-
   const getPosts = (path) => {
-    console.log(path);
     axios({
       method: "get",
       url: `${URL}${path}`,
@@ -40,79 +37,46 @@ const MainPost = (props) => {
   };
 
   useEffect(() => {
+    active === "Recomendados"
+      ? setPath(`/categories/${preference}`)
+      : setPath("");
+
     setIsLoaded(false);
     getPosts(path);
     setTimeout(() => {
-      console.log(posts);
       setIsLoaded(true);
-    }, 4000);
-  }, [path, preference]);
-
-  // const prueba = () => {
-  //   console.log("soy una prueba");
-  //   try {
-  //     axios
-  //       .put("http://localhost:3001/api/auth/edit", {
-  //         _id: "62a09cab39698a3e860f33b7",
-  //         username: "juniorcoderbook",
-  //         email: "juniorcoderbook@gmail.com",
-  //         preferences: [{ categories: "JavaScript" }, { categories: "React" }],
-  //       })
-  //       .then((res) => {
-  //         let { _id, token, userName, urlProfile, preferences } = res.data.post;
-  //         dispatch(
-  //           preferencesState(_id, token, userName, urlProfile, [...preferences])
-  //         );
-  //         console.log(preferences);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const preferencesState = (id, token, userName, urlProfile, preferences) => {
-  //   return {
-  //     type: types.authPreferences,
-  //     payload: {
-  //       id: id,
-  //       token: token,
-  //       userName: userName,
-  //       urlProfile: urlProfile,
-  //       preferences: preferences,
-  //     },
-  //   };
-  // };
+    }, 2000);
+  }, [path, preference, active]);
 
   return (
     <>
       <div className="mt-5 pb-5 animate__animated animate__fadeInUpBig animate__slow">
         <ul className="nav nav-tabs nav-post">
-          {/* <li className="nav-item">
-            <a className="nav-link " aria-current="page" href="#">
-              Siguiendo
-            </a>
-          </li> */}
           <li className="nav-item">
-            <a
-              className="nav-link"
+            <button
+              className={`${
+                active === "Novedades" ? "nav-link active" : "nav-link"
+              }`}
               href="#"
               onClick={() => {
-                setPath(`/categories/${preference}`);
-              }}
-            >
-              Recomendados
-            </a>
-          </li>
-          <li className="nav-item">
-            <a
-              className="nav-link active"
-              href="#"
-              onClick={() => {
-                setPath("");
+                setActive("Novedades");
               }}
             >
               Novedades
-            </a>
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className={`${
+                active === "Recomendados" ? "nav-link active" : "nav-link"
+              }`}
+              href="#"
+              onClick={() => {
+                setActive("Recomendados");
+              }}
+            >
+              Recomendados
+            </button>
           </li>
         </ul>
         {isLoaded ? <PostCardList posts={posts} /> : <div>CARGANDO...</div>}

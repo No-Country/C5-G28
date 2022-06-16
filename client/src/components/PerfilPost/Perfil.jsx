@@ -3,9 +3,9 @@ import imagen from "../../assets/img/Profile 2.png";
 import "./Perfil.css";
 import imagen2 from "../../assets/img/Rectangle 97.png";
 
-export const Perfil = (post) => {
+export const Perfil = ({ post }) => {
   const { username, urlPhoto, title, categories, content, urlProfile } = post;
-  console.log(username);
+  console.log(post);
   return (
     <div className="container">
       <div className="row mt-5">
@@ -74,7 +74,7 @@ export const Perfil = (post) => {
       </p>
       {/* <h2> APLICACION</h2> */}
       <img src={urlPhoto} alt="aplicacion" className="img-fluid imagen2" />
-      <p style={{ marginLeft: "0px" }}>
+      {/* <p style={{ marginLeft: "0px" }}>
         {" "}
         <br /> <br />
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -84,7 +84,7 @@ export const Perfil = (post) => {
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
-      </p>
+      </p> */}
 
       <div className="row mt-5">
         <div className="col-6 d-flex">

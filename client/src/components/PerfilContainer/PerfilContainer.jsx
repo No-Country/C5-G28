@@ -7,7 +7,7 @@ import axios from "axios";
 export const PerfilContainer = () => {
   const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [post, setPost] = useState("");
+  const [post, setPost] = useState({});
   const URL = "http://localhost:3001/api/post/article/";
 
   const getPosts = (id) => {
@@ -17,11 +17,7 @@ export const PerfilContainer = () => {
     })
       .then((response) => {
         const { data } = response;
-
-        return data.post;
-      })
-      .then((response) => {
-        setPost(response[0]);
+        setPost(data.post[0]);
       })
       .catch((error) => {
         console.error(error);

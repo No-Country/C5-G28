@@ -1,0 +1,19 @@
+.follow-btn {
+  background-color: unset;
+  border-color: black;
+}
+.follow-btn div {
+  color: black;
+}
+
+.follow-btn:hover {
+  background-color: #ffae70;
+  border-color: white;
+}
+
+.follow-btn:hover div {
+  color: white;
+}
+.text-color-white{
+  color:#f7f7f7;
+}

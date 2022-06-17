@@ -1,0 +1,48 @@
+.img {
+    vertical-align: middle;
+    border-style: none;
+    width: 60%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-color {
+    background-color: #d9d9d9;
+    margin-top: -10px;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.submit {
+    border-radius: 30px !important;
+    background-color: #FF8C32;
+    color: #fff;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 3px solid rgba(0, 0, 0, 0.7);
+    width: 40%;
+}
+
+.btn {
+    color: #fff;
+} 
+
+.link {
+    color: #EE5007;
+    cursor: pointer;
+}
+
+.google-btn {
+    background-color: #081826;
+}
+
+.facebook-btn {
+    background-color: #7b7b7b;
+}

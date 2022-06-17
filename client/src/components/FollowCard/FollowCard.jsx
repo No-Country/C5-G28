@@ -7,18 +7,18 @@ const FollowCard = () => {
     <div>
       {/* bg-follow_card */}
       <div className="col-xl-12 row  mt-2 col flex-row align-items-center justify-content-center justify-content-xl-start mx-0 py-4 pb-2 px-0">
-        <div className="col-xl-2 col-md-6 mx-0 px-0 d-flex justify-content-center mr-4">
+        <div className="col-xl-2 col-md-6 mx-0 px-0 d-flex justify-content-center ">
           <img
             src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/film-the-big-lebowski-1998-the-dude-jeff-bridges-tops-pendleton-shawl-cardigan-1548360217.jpg?crop=0.545xw:1.00xh;0.312xw,0&resize=640:*"
             alt=""
             width="90"
-            className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm margin-right"
+            className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm "
           />
         </div>
 
         <div className="col-xl-5 col-12">
           <p className="text-center text-xl-left mb-0">
-            <strong className='text-color-white'>Jeffrey Lebowski</strong>
+            <strong>Jeffrey Lebowski</strong>
           </p>
           <p className=" p-0 text-center text-xl-left text-color-white">Desarrollador Backend</p>
         </div>

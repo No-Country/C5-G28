@@ -78,14 +78,14 @@ const UserProfile = () => {
 
     return (
         <>
-                <div className="mt-5 w-75 m-auto form-container animate__animated animate__fadeIn">
+                <div className="wrapper mt-5 w-75 m-auto form-container animate__animated animate__fadeIn">
             <header>
                  <div className="col-md-12 d-flex justify-content-center d-xl-block">
                 <img
                     src={user.urlProfile}
                     alt=""
                     
-                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+                    className=" mt-4 img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                 />
         </div>
                {/*  <img src={user.urlProfile} alt="Imagen de usuario" className="img-responsive userImg" />
@@ -123,7 +123,7 @@ const UserProfile = () => {
                     <span> {errors.email} </span>
                   )}
             <div className="btn-container">
-                <button type="submit" className="btn btn-ConfigUser">Guardar Cambios</button>
+                <button type="submit" className="btn btn-ConfigUser mb-4">Guardar Cambios</button>
             </div>               
             </form>
             

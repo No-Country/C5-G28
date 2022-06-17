@@ -16,16 +16,17 @@ const Sidebar = () => {
      location.pathname === '/' ||
      location.pathname === '/registrarse' ||
      location.pathname === '/verificacion' ||
-     location.pathname === '/recuperarpassword') {
+     location.pathname === '/recuperarpassword' ||
+     location.pathname === '/verificacion/:id') {
     return;
   }
   return ( 
-    <nav className="main-menu animate__animated animate__fadeInLeft animate__slow" style={{ position: "fixed",borderRadius:'0 10px 10px 0' }}>
+    <nav className="main-menu animate__animated animate__fadeInLeft animate__slow" >
       <ul>
         <div className="grid">
-          <div>
+          <div className="logo-container">
             <li>
-              <NavLink to="/">
+              <NavLink to="/" >
                 {/* <i className="fa"> */}
                 <img src="../LogoF.png" alt="" className="logo" />
                 {/* </i> */}
@@ -36,9 +37,9 @@ const Sidebar = () => {
              {/*  <NavLink to="/verificacion">Veri</NavLink> */}
             </li>
           </div>
-          <div>
+          <div className="nav-options-small">
             <li>
-              <NavLink to="/home">
+              <NavLink to="/home" className="nav-options-a">
                 <i className="fa fa-home" style={{ fontSize:'40px !important' }}></i>
                 <span className="nav-text">Home</span>
               </NavLink>
@@ -49,14 +50,14 @@ const Sidebar = () => {
                 <span className="nav-text">Elementos guardados</span>
               </NavLink>
             </li> */}
-            <li className="has-subnav">
-              <NavLink to="/posts">
+            <li className="has-subnav" >
+              <NavLink to="/posts" className="nav-options-a">
                 <i className="fa fa-pencil-square-o padding-left" style={{paddingLeft:'55px !important'}} aria-hidden="true"></i>
                 <span className="nav-text">Post</span>
               </NavLink>
             </li>
-             <li className="has-subnav">
-              <NavLink to="/perfil">
+             <li className="has-subnav" >
+              <NavLink to="/perfil" className="nav-options-a">
                 <i className="fa fa-gear"  aria-hidden="true"></i>
                 <span className="nav-text">Configuracion</span>
               </NavLink>
@@ -68,7 +69,7 @@ const Sidebar = () => {
                 </ NavLink >
             </li> */}
             <li>
-            <NavLink to="/notification" onClick={() => {dispatch({type:types.authLogOut})}}>
+            <NavLink to="/notification" className="nav-options-a" onClick={() => {dispatch({type:types.authLogOut})}}>
                 <i className="fa fa-sign-out padding-left" aria-hidden="true"></i>
                 <span className="nav-text">Log out</span>
                 </ NavLink >

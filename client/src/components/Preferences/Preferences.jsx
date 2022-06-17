@@ -13,7 +13,7 @@ const Preferences = () => {
   ];
 
   return (
-    <div className="row d-flex justify-content-center mt-4">
+    <div className="row d-flex justify-content-center mt-4 margin-left-preferences">
       {/* <h3 className="mb-2 px-2 font-weight-light">Tus preferidos</h3> */}
       <ul className="px-0 d-flex align-content-center align-items-center flex-wrap tag-preferences">
         {/* ITERAR SEGÚN PREFERENCIAS */}

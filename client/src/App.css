@@ -6,7 +6,9 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.box-profile{
+  box-sizing: unset !important;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -67,4 +69,22 @@ body::-webkit-scrollbar-thumb {
 }
 .margin-right{
   margin-right:10px !important ;
+}
+.wrapper{
+ 
+  margin-left:0px;
+}
+@media only screen and (max-width: 600px) {
+  .wrapper{
+    padding-top: 60px !important;
+    margin-left:0px;
+  }
+  .wrapper .container{
+    width:90% !important;
+  }
+}
+@media only screen and (max-width: 990px) {
+.side-news{
+  display:none !important;
+}
 }

@@ -31,7 +31,7 @@ const Home = () => {
             <MainPost />
           </div>
 
-          <div className="col-lg-4 col-sm-0 col-0 px-5 bg-light animate__animated animate__fadeInRight animate__slow" style={{borderRadius:'15px'}}>
+          <div className="col-lg-4 col-sm-0 col-0 px-5 bg-light animate__animated animate__fadeInRight animate__slow side-news" style={{borderRadius:'15px'}}>
             <MostReaded />
            
             <FollowList />

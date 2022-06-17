@@ -31,7 +31,7 @@ export const PerfilContainer = () => {
       console.log(post);
       setIsLoaded(true);
     }, 2000);
-  }, []);
+  },[]);
 
   return (
     <div>{isLoaded ? <Perfil post={post} /> : <div>CARGANDO...</div>}</div>

@@ -1,16 +1,15 @@
 import React from "react";
-import imagen from "../../assets/img/Profile 2.png";
 import "./Perfil.css";
-import imagen2 from "../../assets/img/Rectangle 97.png";
+
 
 export const Perfil = ({ post }) => {
   const { username, urlPhoto, title, categories, content, urlProfile } = post;
-  console.log(post);
+
   return (
     <div className="container">
       <div className="row mt-5">
         <div className="col-6 d-flex">
-          <img src={urlProfile} className="img-responsive imagen" />
+          <img src={urlProfile} className="img-responsive imagen" alt="profile" />
           <p className="ml-4 text-center text-md-left mt-3">
             <span className="nombre">
               <strong>{username}</strong>
@@ -89,11 +88,11 @@ export const Perfil = ({ post }) => {
       <div className="row mt-5">
         <div className="col-6 d-flex">
           <p className="ml-4 text-center text-md-left mt-3">
-            <i class="fa fa-heart-o iconos" aria-hidden="true">
+            <i className="fa fa-heart-o iconos" aria-hidden="true">
               {" "}
               <span>156</span>
             </i>
-            <i class="fa fa-comment-o iconos" aria-hidden="true">
+            <i className="fa fa-comment-o iconos" aria-hidden="true">
               <span>68</span>
             </i>
           </p>

@@ -12,7 +12,7 @@ const PreferenceBtn = ({ name }) => {
     <>
       <li
         type="button"
-        className="btn btn-primary mr-4 mb-1 rounded-pill px-3"
+        className="btn btn-primary mr-2  mb-2 rounded-pill px-3"
         onClick={prueba}
       >
         {name}

@@ -27,7 +27,6 @@ function Login() {
         },
         onSubmit:values => {
             try{
-                console.log(values)
                 axios.post(
                     'http://localhost:3001/api/auth/signin',
                     {
@@ -95,7 +94,7 @@ function Login() {
                   </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="signin-form">
+                <form onSubmit={handleSubmit} className="signin-form" style={{minHeight:'250px'}}>
                   <div className="form-group mb-2">
                     <input
                       className="form-control"
@@ -137,19 +136,19 @@ function Login() {
                       Ingresar
                     </button>
                   </div>
-
+ {/* 
                   <div className="form-group mb-3 d-flex my-fkg-margin">
                     <p>Otras opciones</p>
                     <hr className="my-hr"></hr>
                   </div>
 
-                  <div className="form-group my-fkg-margin">
+                 <div className="form-group my-fkg-margin">
                     <GoogleBtn props="Ingresar" />
                   </div>
 
                   <div className="form-group my-fkg-margin">
                     <FacebookBtn props="Ingresar" />
-                  </div>
+                  </div> */}
                 </form>
 
                 <div className="w-100">

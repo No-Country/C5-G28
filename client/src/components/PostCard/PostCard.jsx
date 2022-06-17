@@ -1,20 +1,27 @@
 import React from "react";
-
+import PostCardMini from "../SidePostCard/PostCardMini";
 import "./PostCard.css";
 import { Link } from "react-router-dom";
 
-export const PostCard = ({ post }) => {
-  const { title, username, content, urlPhoto, likes, categories, date, _id } =
-    post;
+export const PostCard = ({ post,index }) => {
+  const { title,  username, content, urlPhoto, /* likes, */ categories,  _id,urlProfile } = post;
+
   return (
     <Link
       to={`/post/${_id}`}
       className="color animate__animated animate__fadeInUpBig animate__slow"
-    >
+    > 
+    
       <div className="row  mt-5 d-flex align-items-center mx-0">
         <div className="col-md-9 p-4 shadow-4 rounded-3 text-left">
           <div>
-            <h2>{title}</h2>
+            
+              <div className="mt-1">
+                <div className="row justify-content-start align-items-center px-0 mx-0 mt-1">
+                <h2>{title}</h2> 
+
+                </div>
+              </div>
             <p className="content-post">{content}</p>
           </div>
 
@@ -29,8 +36,23 @@ export const PostCard = ({ post }) => {
                   {categories}
                 </li>
               </ul>
+              <div className=" box-profile mt-1  scol-1 d-md-flex ml-3 mr-4 justify-content-start justify-content-lg-start px-0  " >
+                    <img
+                      src={urlProfile ? urlProfile : "https://i1.sndcdn.com/artworks-000582163358-xw0eap-t500x500.jpg"}
+                      alt="profile"
+                      width="40"
+                      height="40"
+                      className=" box-profile  rounded-circle mb-3  shadow-sm "
+                    />
+                  </div>
+                  <div className="text-left ">
+                    <p className="my-0 ">
+                      Por <strong className="">{username}</strong>
+                    </p>
+                    <p>Desarrollador</p>
+                  </div>
             </div>
-
+            
             <div className="d-flex align-items-center justify-content-end col-md-2 px-0">
               <div>
                 {" "}

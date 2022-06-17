@@ -37,7 +37,6 @@ const UserProfile = () => {
                     bornDate:values.bornDate
                 }
                 ).then(res => {
-
                     if(res.status === 200){
                         dispatch(updateProfile(
                             values.id,
@@ -45,16 +44,19 @@ const UserProfile = () => {
                             values.username,
                             values.urlProfile,
                             values.email,
-                            values.bornDate));
-                        MySwal.fire({customClass: {confirmButton: 'swalBtnColor'},title:<h2> Cambios realizados </h2>}).then(()=>{})
-                    }
-                }).catch(error => MySwal.fire({title:<h2> Credenciales erroneas </h2>}))
+                            values.bornDate
+                            ));}})
+                       .then(()=>{ MySwal.fire({customClass: {confirmButton: 'swalBtnColor'},title:" Cambios realizados "})})
+                       .catch(error => MySwal.fire({
+                        customClass: {confirmButton: 'swalBtnColor'},
+                        title:"Credenciales erroneas"
+                      }))
         }catch(error){
             console.log(error)
         } 
     },
     validationSchema:Yup.object({
-        username:Yup.string().max(15,'debe tener 15 caracteres o menos').required(),
+        username:Yup.string().max(25,'debe tener 15 caracteres o menos').required(),
         email:Yup.string().email('formato no valido').required('email requerido'),
         urlProfile:Yup.string()
     })
@@ -99,19 +101,27 @@ const UserProfile = () => {
                     <input type="text" {...getFieldProps('username')} /* readonly */ className="form-control" /* value="Menganito" */ />
                 </div>
                  {/* Para Manejo de Errores en el Formulario  */}
-    
+                 {touched.username && errors.username && (
+                    <span> {errors.username} </span>
+                  )}
             </div>
              <div className="form-group row">
                 <label htmlFor="apellido" className="col-sm-2 col-form-label">url foto de perfil</label>
                 <div className="col-sm-10">
                     <input type="text" {...getFieldProps('urlProfile')} /* readonly */ className="form-control" /* value="Fulano"  *//>
                 </div>
+                {touched.urlProfile && errors.urlProfile && (
+                    <span> {errors.urlProfile} </span>
+                  )}
             </div> 
             <div className="form-group row">
                 <label htmlFor="fechaNacimiento" className="col-sm-2 col-form-label">Fecha Nacimiento</label>
                 <div className="col-sm-10">
                     <input type="date" /* readonly */ {...getFieldProps('bornDate')} className="form-control"    /* disabled */ />
                 </div>
+                {touched.bornDate && errors.bornDate && (
+                    <span> {errors.bornDate} </span>
+                  )}
             </div>
             <div className="form-group row">
                 <label htmlFor="correo" className="col-sm-2 col-form-label">Correo Electronico</label>

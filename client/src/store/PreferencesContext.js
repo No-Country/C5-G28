@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 export const PreferencesContext = createContext();
 
 export const PreferencesContextProvider = ({ children }) => {
-  const [preference, setPreference] = useState("JavaScript");
+  const [preference, setPreference] = useState("javascript");
 
   const setPreferenceValue = (value) => {
     setPreference(value);

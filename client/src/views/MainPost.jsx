@@ -14,12 +14,12 @@ const MainPost = (props) => {
   const { preference } = useContext(PreferencesContext);
   const [path, setPath] = useState(`/categories/${preference}`);
   const [active, setActive] = useState("Novedades");
-  const URL = "http://localhost:3001/api/post";
+  const URL = "http://localhost:3001/api/post/";
 
   const getPosts = (path) => {
     axios({
       method: "get",
-      url: `${URL}${path}`,
+      url: `${URL}`,
     })
       .then((response) => {
         const { data } = response;

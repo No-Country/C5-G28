@@ -9,7 +9,7 @@ const initialStore = {
 }
 
 export const storeReducer = (state,action) =>{
-console.log(action)
+
     switch(action.type){
         case types.authLogOut:
             return {

@@ -1,5 +1,5 @@
 import React from "react";
-import PostCardMini from "../SidePostCard/PostCardMini";
+
 import "./PostCard.css";
 import { Link } from "react-router-dom";
 

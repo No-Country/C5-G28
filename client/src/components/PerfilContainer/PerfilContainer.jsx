@@ -28,10 +28,10 @@ export const PerfilContainer = () => {
     setIsLoaded(false);
     getPosts(id);
     setTimeout(() => {
-      console.log(post);
+
       setIsLoaded(true);
     }, 2000);
-  },[]);
+  },[id]);
 
   return (
     <div>{isLoaded ? <Perfil post={post} /> : <div>CARGANDO...</div>}</div>

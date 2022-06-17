@@ -26,19 +26,19 @@ function NuevaPassword() {
 
                 axios.put(
                     'http://localhost:3001/api/auth/new-password',
-                    {password: values.password},
+                    {newPassword: values.password},
                     {headers:{'Content-Type': 'application/json','reset-token':confirm}}  
                     ).then(res => {
                         Navigate('/verificacion')
-                    }).catch(error =>  MySwal.fire({title:<h2> surgio un problema, intenta nuevamente </h2>}))
+                    }).catch(error =>  MySwal.fire({customClass: {confirmButton: 'swalBtnColor'},title:" surgio un problema, intenta nuevamente "}))
             }catch(error){
-                MySwal.fire({title:<h2> surgio un problema </h2>})
+                MySwal.fire({customClass: {confirmButton: 'swalBtnColor'},title:" surgio un problema "})
             } 
 
         },
         validationSchema:Yup.object({
-            password:Yup.string().max(14,'hasta 15 caracteres').min(8,'mas de 8 caracteres'),
-            passwordConfirm:Yup.string().max(14,'hasta 15 caracteres').min(8,'mas de 8 caracteres').oneOf([Yup.ref('password')], 'Contraseñas distintas')
+            password:Yup.string().max(14,'hasta 15 caracteres').min(5,'mas de 8 caracteres'),
+            passwordConfirm:Yup.string().max(14,'hasta 15 caracteres').min(5,'mas de 8 caracteres').oneOf([Yup.ref('password')], 'Contraseñas distintas')
         })
     }) 
     return (

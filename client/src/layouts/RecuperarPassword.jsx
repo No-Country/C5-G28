@@ -35,7 +35,7 @@ function NuevaPassword() {
 
         },
         validationSchema:Yup.object({
-            username:Yup.string().max(14,'hasta 15 caracteres').min(4,'mas de 8 caracteres')
+            username:Yup.string().max(25,'hasta 15 caracteres').min(4,'mas de 8 caracteres')
         })
     }) 
     return (
@@ -59,7 +59,9 @@ function NuevaPassword() {
                                {/* input clase form-control tipo password */}
                                <input className="form-control" {...getFieldProps('username')} type="username" placeholder="Ingrese su nombre de usuario"/>                              
                             </div>
-
+                            {touched.username && errors.username && (
+                                <span> {errors.username} </span>
+                            )}
                             <div className="form-group">
                                 <button type="submit" className="form-control btn btn-primary submit px-3">Enviar</button>
                             </div>                                                   

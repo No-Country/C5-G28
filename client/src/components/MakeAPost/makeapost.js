@@ -47,9 +47,9 @@ const MakeAPost = () => {
                     urlPhoto:values.urlPhoto,
                     urlProfile:values.urlProfile
                 }).then(res => {
-                    console.log(res)
-                    if(res.status === 200){ MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})}
-                }).catch(error => MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title:<h2> fallo post </h2>}))
+
+                    if(res.status === 200){ MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title: "Posteado"}).then(()=>{Navigate('/home')})}
+                }).catch(error => MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title: "error" }))
         }catch(error){
             console.log(error)
         } 

@@ -8,8 +8,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import LoginImage from "../assets/img/loginImg.png";
-import GoogleBtn from "../components/SocialButtons/GoogleBtn";
-import FacebookBtn from "../components/SocialButtons/FacebookBtn";
+
 import { StoreContext } from "../store/storeProvider";
 import { types } from "../store/storeReducer";
 
@@ -34,7 +33,7 @@ function Login() {
                         password:values.password}
                     ).then(res => {
                         let {id,token,userName,urlProfile,email,bornDate,preferences} = res.data;
-                        console.log('valueeee'+res.data)
+
                         dispatch(loginState(
                             id,
                             token,
@@ -47,7 +46,7 @@ function Login() {
                         Navigate('/home')
                     }).catch(error => MySwal.fire({
                       customClass: {confirmButton: 'swalBtnColor'},
-                      title:<h2> Credenciales erroneas </h2>
+                      title:"Credenciales erroneas"
                     }))
             }catch(error){
                 console.log(error)

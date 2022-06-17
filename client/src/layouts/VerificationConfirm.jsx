@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import "../styles/login.css";
 import bgOrange from '../assets/img/imageOrange-bg.png';
 import guyImg from '../assets/img/veri-guy.svg';
@@ -10,18 +10,17 @@ const VerificationConfirm = () => {
 
     const userConfirmKey = useParams()
     const url = `http://localhost:3001/api/auth/confirm-account/`
-    const sendConfirm = () =>{
+    const sendConfirm = async() =>{
         try{
-            axios
+            await axios
             .get(url+userConfirmKey.confirm)
-            .then(res=>{})
+            .then(res=>{console.log('llamo')})
         }catch(error){
             console.log(error)
         }
     }
-    useEffect(() => {
-       sendConfirm();
-    }, []);
+    sendConfirm();
+
     return(
         <div className="my-containter verificacion-container">
             <div className="verificacion-layer">

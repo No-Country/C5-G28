@@ -14,3 +14,22 @@
 .follow-btn:hover div {
   color: white;
 }
+
+/* btn de seguir */
+
+.btn-seguir {
+  background-color: #ffae70;
+  border-color: white;
+}
+
+.card-seguir {
+  max-height: 20rem;
+  width: 10rem;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 576px) {
+  .card-seguir {
+    width: 18rem !important;
+  }
+}

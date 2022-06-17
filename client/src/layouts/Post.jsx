@@ -1,5 +1,5 @@
 import React from 'react';
-import MakeAPost from '../components/MakeAPost/Makeapost';
+import MakeAPost from '../components/MakeAPost/makeapost';
 
 
 const Posts = () => {

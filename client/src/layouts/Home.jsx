@@ -17,7 +17,7 @@ const Home = () => {
     <>
     <div className="wrapper animate__animated animate__fadeIn"  >
       <div>
-        <div /* className="row col-md mx-0" */ className="home-container">
+        <div /* className="row col-md mx-0" */ className="row home-container">
           {/* <div className="col-lg-0"></div> */}
           <div className="col-lg-8 px-4 px-sm-5 mt-5 col-sm-12 col-12 home-news-post">
               <Usercard/>  

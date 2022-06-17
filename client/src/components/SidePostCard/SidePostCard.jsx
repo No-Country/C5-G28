@@ -16,7 +16,7 @@ const SidePostCard = () => {
             className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm "
           />
         </div>
-        <div className="text-left">
+        <div className="text-left ml-3">
           <p className="my-0 ">
             Por <strong>John Titor</strong>
           </p>

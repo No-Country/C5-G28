@@ -8,7 +8,7 @@ export const PerfilContainer = () => {
   const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
   const [post, setPost] = useState({});
-  const URL = "http://localhost:3001/api/post/article/";
+  const URL = REACT_APP_API_URL+"post/article/";
 
   const getPosts = (id) => {
     axios({

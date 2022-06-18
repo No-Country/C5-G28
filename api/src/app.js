@@ -21,10 +21,10 @@ app.use(morgan("dev"));
 // CORS
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Allow', 'GET, POST, PUT, DELETE');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Allow", "GET, POST, PUT, DELETE");
   next();
 });
 
@@ -44,4 +44,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/post", featuredRoutes);
 app.use("/api", followRoutes);
+
+app.use(express.static(path.join(dirname, "public")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(dirname, "public", "index.html"));
+});
+
 export default app;

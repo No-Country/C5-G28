@@ -10,6 +10,7 @@ const VerificationConfirm = () => {
 
     const userConfirmKey = useParams()
     const url = process.env.REACT_APP_API_URL+"auth/confirm-account/"
+    console.log(url + userConfirmKey)
     const sendConfirm = async() =>{
         try{
             await axios

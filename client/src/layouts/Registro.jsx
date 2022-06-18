@@ -14,6 +14,7 @@ import '../components/SocialButtons/social.css';
 function Registro() {
     const MySwal = withReactContent(Swal)
     let Navigate = useNavigate();
+    const URL = process.env.REACT_APP_API_URL + "auth/signup";
     const {handleSubmit,errors,touched,getFieldProps} = useFormik({
         initialValues:{
             username:'',
@@ -27,7 +28,7 @@ function Registro() {
 
             try{
                 axios.post(
-                    'http://localhost:3001/api/auth/signup',
+                    URL,
                     {
                         username: values.username,
                         email: values.email,

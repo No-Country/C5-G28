@@ -14,7 +14,7 @@ const MainPost = (props) => {
   const { preference } = useContext(PreferencesContext);
   const [path, setPath] = useState(`/categories/${preference}`);
   const [active, setActive] = useState("Novedades");
-  const URL = process.env.REACT_APP_API_URL+"post/";
+  const URL = process.env.REACT_APP_API_URL+"post"+path;
 
   const getPosts = (path) => {
     axios({

@@ -22,7 +22,7 @@ const MakeAPost = () => {
     const MySwal = withReactContent(Swal)
     const { user } = useContext(StoreContext);   
     let Navigate = useNavigate();
-    const URL = REACT_APP_API_URL+"post/save/";
+    const URL = process.env.REACT_APP_API_URL+"post/save/";
     const {handleSubmit, errors,/* touched, */ getFieldProps,setFieldValue,values} = useFormik({
     initialValues:{
         username:'',

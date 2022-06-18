@@ -5,7 +5,7 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      unique: false,
+      unique: true,
     },
     email: {
       type: String,
@@ -16,6 +16,12 @@ const userSchema = new Schema(
       unique: false,
     },
     bornDate: {
+      type: Date,
+    },
+    urlProfile: {
+      type: String,
+    },
+    urlProfile: {
       type: String,
     },
     roles: [
@@ -33,6 +39,18 @@ const userSchema = new Schema(
     confirmedAccount: {
       type: Boolean,
       default: false,
+    },
+    likes: {
+      type: [String],
+    },
+    postSaved: {
+      type: [String],
+    },
+    preferences: {
+      type: [Object],
+    },
+    follows: {
+      type: [String],
     },
   },
   { timestamps: true, versionKey: false }

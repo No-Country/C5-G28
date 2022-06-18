@@ -1,0 +1,6 @@
+.nav-post a {
+  color: black;
+}
+.nav-post .active {
+  font-weight: 600;
+}

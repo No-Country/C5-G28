@@ -24,7 +24,7 @@ const MainPost = (props) => {
       .then((response) => {
         const { data } = response;
 
-        return data.post.slice(0, 4);
+        return data.post.slice(0, 10);
       })
       .then((response) => {
         setPosts(response);

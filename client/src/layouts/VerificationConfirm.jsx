@@ -6,15 +6,17 @@ import bell from '../assets/img/campana.png';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+
 const VerificationConfirm = () => {
 
     const userConfirmKey = useParams()
-    const url = process.env.REACT_APP_API_URL+"auth/confirm-account/"
-    console.log(url + userConfirmKey)
+    console.log(userConfirmKey)
+    const URL = process.env.REACT_APP_API_URL+"auth/confirm-account/"+userConfirmKey.confirm;
+    console.log(URL)
     const sendConfirm = async() =>{
         try{
             await axios
-            .get(url+userConfirmKey.confirm)
+            .get(URL)
             .then(res=>{console.log('llamo')})
         }catch(error){
             console.log(error)

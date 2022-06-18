@@ -14,6 +14,7 @@ import '../components/SocialButtons/social.css';
 function NuevaPassword() {
     const MySwal = withReactContent(Swal)
     let Navigate = useNavigate();
+    const URL = process.env.REACT_APP_API_URL + "auth/forgot-password";
     const {handleSubmit,errors,touched,getFieldProps} = useFormik({
         initialValues:{
             username:''
@@ -22,7 +23,7 @@ function NuevaPassword() {
 
             try{
                 axios.put(
-                    'http://localhost:3001/api/auth/forgot-password',
+                    URL,
                     {
                         username: values.username
                     }

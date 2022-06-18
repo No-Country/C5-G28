@@ -20,7 +20,8 @@ const options = [
 
 const MakeAPost = () => {
     const MySwal = withReactContent(Swal)
-    const { user } = useContext(StoreContext);   
+    const { user } = useContext(StoreContext);
+    const URL =  process.env.REACT_APP_API_URL+"save/";
     let Navigate = useNavigate();
 
     const {handleSubmit, errors,/* touched, */ getFieldProps,setFieldValue,values} = useFormik({
@@ -38,7 +39,7 @@ const MakeAPost = () => {
             values.username = user.userName;
             values.urlProfile = user.urlProfile;
             axios.post(
-                'http://localhost:3001/api/post/save/',
+                URL,
                 {   
                     username:values.username,
                     title:values.title,

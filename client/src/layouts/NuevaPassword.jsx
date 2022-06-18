@@ -15,6 +15,7 @@ function NuevaPassword() {
     const {confirm} = useParams()
     const MySwal = withReactContent(Swal)
     let Navigate = useNavigate();
+    const URL = process.env.REACT_APP_API_URL + "auth/new-password"
     const {handleSubmit,errors,touched,getFieldProps} = useFormik({
         initialValues:{
             password:'',
@@ -25,7 +26,7 @@ function NuevaPassword() {
             try{
 
                 axios.put(
-                    'http://localhost:3001/api/auth/new-password',
+                    URL,
                     {newPassword: values.password},
                     {headers:{'Content-Type': 'application/json','reset-token':confirm}}  
                     ).then(res => {

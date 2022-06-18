@@ -15,7 +15,7 @@ import { types } from "../store/storeReducer";
 import "../styles/login.css";
 import "../components/SocialButtons/social.css";
 function Login() {
-  
+        console.log(process.env.REACT_APP_API_URL+'auth/signin')
         const MySwal = withReactContent(Swal)
         const {dispatch } = useContext(StoreContext);
         let Navigate = useNavigate();
@@ -27,7 +27,7 @@ function Login() {
         onSubmit:values => {
             try{
                 axios.post(
-                    'http://localhost:3001/api/auth/signin',
+                  process.env.REACT_APP_API_URL+'auth/signin',
                     {
                         email:values.email,
                         password:values.password}

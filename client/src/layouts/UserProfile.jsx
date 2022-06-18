@@ -14,6 +14,7 @@ import { types } from '../store/storeReducer';
 
 const UserProfile = () => {
     const MySwal = withReactContent(Swal)
+    const URL = process.env.REACT_APP_API_URL + "auth/editprofile";
     const { user,dispatch } = useContext(StoreContext);
     const {handleSubmit,errors,touched,getFieldProps} = useFormik({
     initialValues:{
@@ -27,7 +28,7 @@ const UserProfile = () => {
     onSubmit:values => {
         try{
             axios.put(
-                'http://localhost:3001/api/auth/editprofile',
+                URL,
                 {   
                     id:values.id,
                     token:values.token,

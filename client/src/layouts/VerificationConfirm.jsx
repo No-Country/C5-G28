@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 const VerificationConfirm = () => {
 
     const userConfirmKey = useParams()
-    const url = `http://localhost:3001/api/auth/confirm-account/`
+    const url = process.env.REACT_APP_API_URL+"auth/confirm-account/"
     const sendConfirm = async() =>{
         try{
             await axios

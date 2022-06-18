@@ -20,8 +20,7 @@ const options = [
 
 const MakeAPost = () => {
     const MySwal = withReactContent(Swal)
-    const { user } = useContext(StoreContext);
-    const URL =  process.env.REACT_APP_API_URL+"save/";
+    const { user } = useContext(StoreContext);   
     let Navigate = useNavigate();
 
     const {handleSubmit, errors,/* touched, */ getFieldProps,setFieldValue,values} = useFormik({
@@ -39,7 +38,7 @@ const MakeAPost = () => {
             values.username = user.userName;
             values.urlProfile = user.urlProfile;
             axios.post(
-                URL,
+                'http://localhost:3001/api/post/save/',
                 {   
                     username:values.username,
                     title:values.title,
@@ -48,9 +47,9 @@ const MakeAPost = () => {
                     urlPhoto:values.urlPhoto,
                     urlProfile:values.urlProfile
                 }).then(res => {
-
-                    if(res.status === 200){ MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title: "Posteado"}).then(()=>{Navigate('/home')})}
-                }).catch(error => MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title: "error" }))
+                    console.log(res)
+                    if(res.status === 200){ MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title:<h2> Posteado </h2>}).then(()=>{Navigate('/home')})}
+                }).catch(error => MySwal.fire({ customClass: {confirmButton: 'swalBtnColor'},title:<h2> fallo post </h2>}))
         }catch(error){
             console.log(error)
         } 
@@ -64,7 +63,7 @@ const MakeAPost = () => {
 
     return (
     
-    <section className='wrapper my-fkng-container animate__animated animate__fadeIn animate__slow'>
+    <section className='my-fkng-container'>
 
         
         <form className='container' onSubmit={handleSubmit}>

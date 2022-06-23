@@ -156,7 +156,7 @@ export const forgotPassword = async (req, res) => {
     );
 
     // Generacion de ruta frontend para este usuario
-    const verificationLink = `${process.env.RESET_PASSWORD_LINK}?confirm=${token}`;
+    const verificationLink = `${process.env.RESET_PASSWORD_LINK}${token}`;
 
     userExists.resetToken = token;
 

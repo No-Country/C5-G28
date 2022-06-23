@@ -39,7 +39,7 @@ export const AppRouter = () => {
           <Route element={<Verification />} path="/verificacion" />
           <Route
             element={<VerificationConfirm />}
-            path="/verificacion2/:confirm"
+            path="/verificacion/:confirm"
           />
           <Route element={<RecuperarPassword />} path="/recuperarpassword" />
           <Route element={<NuevaPassword />} path="/nuevapassword/:confirm" />

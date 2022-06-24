@@ -20,7 +20,7 @@
     <br />
     <br />
 	·
-<a href="<a href="·"><strong>Figma</strong></a>
+<a href="https://www.figma.com/file/qvjt4jUdZWeUnP29VwZfXW/Inicio?node-id=0%3A1"><strong>Figma</strong></a>
     ·
   </p>
   
